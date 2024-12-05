@@ -7,7 +7,8 @@ This is a converter pdf to jpeg written for educational purposes.
 Based on tech stack:
 - [PHP](https://www.php.net/),
 - [Laravel](https://laravel.com/),
-- [ImageMagick](https://imagemagick.org/).
+- [ImageMagick](https://imagemagick.org/),
+- [TailwindCss](https://tailwindcss.com/).
 
 ## License
 
