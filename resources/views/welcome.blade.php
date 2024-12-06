@@ -61,7 +61,7 @@
                     </header>
 
                     <main class="min-h-96 mt-6 text-center flex flex-col justify-center">
-                        <p class="h-1/5">This is a converter pdf to jpeg written for educational purposes.</p>
+                        <p>This is a converter pdf to jpeg written for educational purposes.</p>
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
