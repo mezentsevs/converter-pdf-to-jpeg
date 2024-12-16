@@ -2,7 +2,7 @@
 
 ## About 'Converter pdf to jpeg'
 
-This is a converter pdf to jpeg written for educational purposes.
+This is a converter pdf to jpeg written in and for educational purposes.
 
 Based on tech stack:
 - [PHP](https://www.php.net/),
