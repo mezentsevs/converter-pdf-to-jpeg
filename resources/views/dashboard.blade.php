@@ -13,14 +13,14 @@
                         @csrf
 
                         <div class="inline-block">
-                            <x-input-label for="document" :value="__('documents.choose')" />
+                            <x-input-label for="document" :value="__('documents.uploads.label')" />
                             <input type="hidden" name="MAX_FILE_SIZE" value="{{ config('uploads.post.max_file_size') }}">
                             <x-file-input id="document" type="file" name="document" accept="application/pdf" required />
                             <x-input-error :messages="$errors->get('document')" class="mt-2" />
                         </div>
 
                         <x-primary-button class="ml-5">
-                            {{ __('documents.convert') }}
+                            {{ __('documents.uploads.button') }}
                         </x-primary-button>
                     </form>
                 </div>

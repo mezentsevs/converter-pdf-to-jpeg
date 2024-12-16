@@ -29,7 +29,9 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-        //
+        if (!$request->file('document')->isValid()) {
+            abort(422, __('documents.uploads.errors.invalid'));
+        }
     }
 
     /**
