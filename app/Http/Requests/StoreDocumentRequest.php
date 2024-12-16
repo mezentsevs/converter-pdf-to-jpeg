@@ -23,7 +23,12 @@ class StoreDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'document' => [
+                'required',
+                'file',
+                'mimetypes:application/pdf',
+                'max:' . ((int) config('uploads.post.max_file_size'))/1024,
+            ],
         ];
     }
 }
