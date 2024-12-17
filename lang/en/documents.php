@@ -17,7 +17,7 @@ return [
             'invalid' => 'The uploaded document is not valid.',
         ],
         'label' => 'Choose your document for conversion',
-        'success' => 'Converted successfully.',
+        'success' => 'Uploaded successfully.',
     ],
 
 ];
