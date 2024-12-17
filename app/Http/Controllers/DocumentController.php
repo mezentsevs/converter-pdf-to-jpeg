@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
+use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentController extends Controller
 {
+    protected DocumentService $documents;
+
+    public function __construct()
+    {
+        $this->documents = app(DocumentService::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,7 +44,7 @@ class DocumentController extends Controller
             abort(422, __('documents.uploads.errors.invalid'));
         }
 
-        $request->user()->documents()->create([
+        $this->documents->create($request->user(), [
             'filename' => basename($file->store(config('uploads.documents_directory'))),
             'type' => $file->getMimeType(),
             'size' => $file->getSize(),
