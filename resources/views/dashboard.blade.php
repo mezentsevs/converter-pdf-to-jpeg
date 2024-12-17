@@ -26,4 +26,16 @@
             </div>
         </div>
     </div>
+
+    @if(session('success'))
+        <div class="py-12">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-green-600 dark:text-green-300">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </x-app-layout>

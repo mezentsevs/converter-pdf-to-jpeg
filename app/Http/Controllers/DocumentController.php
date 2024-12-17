@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
+use Illuminate\Http\RedirectResponse;
 
 class DocumentController extends Controller
 {
@@ -27,11 +28,23 @@ class DocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDocumentRequest $request)
+    public function store(StoreDocumentRequest $request): RedirectResponse
     {
-        if (!$request->file('document')->isValid()) {
+        $file = $request->file('document');
+
+        if (!$file?->isValid()) {
             abort(422, __('documents.uploads.errors.invalid'));
         }
+
+        $request->user()->documents()->create([
+            'filename' => basename($file->store(config('uploads.documents_directory'))),
+            'type' => $file->getMimeType(),
+            'size' => $file->getSize(),
+        ]);
+
+        return redirect()
+            ->route('dashboard')
+            ->with('success', __('documents.uploads.success'));
     }
 
     /**

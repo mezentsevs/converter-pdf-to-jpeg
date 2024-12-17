@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Document extends Model
 {
+    protected $fillable = [
+        'filename',
+        'type',
+        'size',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

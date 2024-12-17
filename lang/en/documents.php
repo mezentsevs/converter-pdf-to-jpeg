@@ -12,11 +12,12 @@ return [
     */
 
     'uploads' => [
-        'label' => 'Choose your document for conversion',
         'button' => 'Convert',
         'errors' => [
             'invalid' => 'The uploaded document is not valid.',
         ],
+        'label' => 'Choose your document for conversion',
+        'success' => 'Converted successfully.',
     ],
 
 ];
