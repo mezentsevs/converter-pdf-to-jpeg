@@ -11,6 +11,12 @@ return [
     |
     */
 
+    'conversions' => [
+        'errors' => [
+            'common' => 'Something went wrong.'
+        ],
+        'success' => 'Converted successfully.',
+    ],
     'uploads' => [
         'button' => 'Convert',
         'errors' => [

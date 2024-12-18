@@ -2,13 +2,17 @@
 
 namespace App\Listeners;
 
-use App\Events\DocumentCreated;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\DocumentCreatedEvent;
+use Illuminate\Http\RedirectResponse;
 
-class DocumentCreatedListener implements ShouldQueue
+class DocumentCreatedListener
 {
-    public function handle(DocumentCreated $event): void
+    public function handle(DocumentCreatedEvent $event): RedirectResponse
     {
-        logger()->info('Document created', [$event]);
+        try {
+            return redirect()->route('dashboard')->with('converted', __('documents.conversions.success'));
+        } catch (\Exception) {
+            return redirect()->route('dashboard')->with('error', __('documents.conversions.errors.common'));
+        }
     }
 }

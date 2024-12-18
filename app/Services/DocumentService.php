@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Events\DocumentCreated;
+use App\Events\DocumentCreatedEvent;
 use App\Models\Document;
 use App\Models\User;
 
@@ -16,7 +16,7 @@ class DocumentService
             'size' => $payload['size'],
         ]);
 
-        event(new DocumentCreated($user, $document));
+        event(new DocumentCreatedEvent($user, $document));
 
         return $document;
     }
