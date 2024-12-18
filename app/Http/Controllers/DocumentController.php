@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
 use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class DocumentController extends Controller
 {
@@ -21,7 +22,7 @@ class DocumentController extends Controller
     {
         //
     }
-    
+
     public function create()
     {
         //
@@ -35,8 +36,12 @@ class DocumentController extends Controller
             abort(422, __('documents.uploads.errors.invalid'));
         }
 
+        $ext = $file->extension();
+        $hash = Str::of($file->hashName())->basename(".{$ext}");
+        $slug = Str::of($file->getClientOriginalName())->basename(".{$ext}")->slug('_');
+
         $this->documents->create($request->user(), [
-            'filename' => basename($file->store(config('uploads.documents_directory'))),
+            'filename' => basename($file->storeAs(config('uploads.documents_directory'), "{$hash}_{$slug}.{$ext}")),
             'type' => $file->getMimeType(),
             'size' => $file->getSize(),
         ]);
