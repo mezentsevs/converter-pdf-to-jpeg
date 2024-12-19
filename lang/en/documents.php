@@ -13,7 +13,8 @@ return [
 
     'conversions' => [
         'errors' => [
-            'common' => 'Something went wrong.'
+            'common' => 'Something went wrong.',
+            'max_pages_count' => 'Max pages count (:current > :max).',
         ],
         'success' => 'Converted successfully.',
     ],
