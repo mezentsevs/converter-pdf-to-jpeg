@@ -41,7 +41,7 @@ class DocumentController extends Controller
         $slug = Str::of($file->getClientOriginalName())->basename(".{$ext}")->slug('_');
 
         $this->documents->create($request->user(), [
-            'filename' => basename($file->storeAs(config('uploads.documents_directory'), "{$hash}_{$slug}.{$ext}")),
+            'filename' => basename($file->storeAs(config('documents.directory'), "{$hash}_{$slug}.{$ext}")),
             'type' => $file->getMimeType(),
             'size' => $file->getSize(),
         ]);

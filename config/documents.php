@@ -4,15 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Uploads parameters
+    | Documents parameters
     |--------------------------------------------------------------------------
     |
-    | Here you may specify uploads parameters.
+    | Here you may specify documents parameters.
     |
     */
 
-    'post' => [
-        'max_file_size' => env('POST_MAX_FILE_SIZE', 10*1024*1024),
-    ],
-
+    'directory' => env('DOCUMENTS_DIRECTORY','documents'),
 ];
