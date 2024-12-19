@@ -36,15 +36,7 @@ class DocumentController extends Controller
             abort(422, __('documents.uploads.errors.invalid'));
         }
 
-        $ext = $file->extension();
-        $hash = Str::of($file->hashName())->basename(".{$ext}");
-        $slug = Str::of($file->getClientOriginalName())->basename(".{$ext}")->slug('_');
-
-        $this->documents->create($request->user(), [
-            'filename' => basename($file->storeAs(config('documents.directory'), "{$hash}_{$slug}.{$ext}")),
-            'type' => $file->getMimeType(),
-            'size' => $file->getSize(),
-        ]);
+        $this->documents->create($request->user(), $file);
 
         return redirect()
             ->route('dashboard')
