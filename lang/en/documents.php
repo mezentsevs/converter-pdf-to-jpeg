@@ -14,14 +14,14 @@ return [
     'conversions' => [
         'errors' => [
             'common' => 'Something went wrong.',
-            'max_pages_count' => 'Max pages count (:current > :max).',
+            'max_pages_count' => 'Max pages count exceeded (:current > :max).',
         ],
         'success' => 'Converted successfully.',
     ],
     'uploads' => [
         'button' => 'Convert',
         'errors' => [
-            'invalid' => 'The uploaded document is not valid.',
+            'invalid' => 'Uploaded document is not valid.',
         ],
         'label' => 'Choose your document for conversion',
         'success' => 'Uploaded successfully.',

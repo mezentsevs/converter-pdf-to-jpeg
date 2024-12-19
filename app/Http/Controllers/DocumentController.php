@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
 use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Str;
 
 class DocumentController extends Controller
 {
@@ -33,7 +32,9 @@ class DocumentController extends Controller
         $file = $request->file('document');
 
         if (!$file?->isValid()) {
-            abort(422, __('documents.uploads.errors.invalid'));
+            return redirect()
+                ->route('dashboard')
+                ->with('error', __('documents.uploads.errors.invalid'));
         }
 
         $this->documents->create($request->user(), $file);

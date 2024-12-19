@@ -35,13 +35,19 @@ class DocumentCreatedListener
                 ]));
             }
 
-            return redirect()->route('dashboard')->with('converted', __('documents.conversions.success'));
+            return redirect()
+                ->route('dashboard')
+                ->with('converted', __('documents.conversions.success'));
         } catch (DocumentMaxPagesCountException $e) {
             $this->documents->delete($event->document);
 
-            return redirect()->route('dashboard')->with('error', $e->getMessage());
+            return redirect()
+                ->route('dashboard')
+                ->with('error', $e->getMessage());
         } catch (\Exception) {
-            return redirect()->route('dashboard')->with('error', __('documents.conversions.errors.common'));
+            return redirect()
+                ->route('dashboard')
+                ->with('error', __('documents.conversions.errors.common'));
         }
     }
 }
