@@ -5,12 +5,22 @@ namespace App\Listeners;
 use App\Events\DocumentCreatedEvent;
 use App\Exceptions\DocumentMaxPagesCountException;
 use App\Helpers\PdfHelper;
+use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentCreatedListener
 {
+    protected DocumentService $documents;
+
+    public function __construct()
+    {
+        $this->documents = app(DocumentService::class);
+    }
+
     public function handle(DocumentCreatedEvent $event): RedirectResponse
     {
+        logger()->info($event::class, [$event]);
+
         try {
             $path = storage_path('app'
                 . DS . 'private'
@@ -27,6 +37,8 @@ class DocumentCreatedListener
 
             return redirect()->route('dashboard')->with('converted', __('documents.conversions.success'));
         } catch (DocumentMaxPagesCountException $e) {
+            $this->documents->delete($event->document);
+
             return redirect()->route('dashboard')->with('error', $e->getMessage());
         } catch (\Exception) {
             return redirect()->route('dashboard')->with('error', __('documents.conversions.errors.common'));

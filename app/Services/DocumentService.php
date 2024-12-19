@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Events\DocumentCreatedEvent;
+use App\Events\DocumentDeletedEvent;
 use App\Models\Document;
 use App\Models\User;
 
@@ -19,5 +20,12 @@ class DocumentService
         event(new DocumentCreatedEvent($user, $document));
 
         return $document;
+    }
+
+    public function delete(Document $document): void
+    {
+        $document->delete();
+
+        event(new DocumentDeletedEvent($document));
     }
 }
