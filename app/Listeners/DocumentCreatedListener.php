@@ -22,13 +22,7 @@ class DocumentCreatedListener
         logger()->info($event::class, [$event]);
 
         try {
-            $path = storage_path('app'
-                . DS . 'private'
-                . DS . config('documents.directory')
-                . DS . $event->document->filename
-            );
-
-            if (($currentPagesCount = PdfHelper::countPages($path)) > config('documents.max_pages_count')) {
+            if (($currentPagesCount = PdfHelper::countPages($event->document->filepath)) > config('documents.max_pages_count')) {
                 throw new DocumentMaxPagesCountException(__('documents.conversions.errors.max_pages_count', [
                     'current' => $currentPagesCount,
                     'max' => config('documents.max_pages_count'),
