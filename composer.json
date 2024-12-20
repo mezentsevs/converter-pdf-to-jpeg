@@ -12,7 +12,8 @@
         "php": "^8.4",
         "laravel/breeze": "^2.2",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "ext-imagick": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
