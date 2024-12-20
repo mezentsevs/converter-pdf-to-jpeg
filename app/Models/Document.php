@@ -35,4 +35,22 @@ class Document extends Model
             ),
         );
     }
+
+    protected function imagesAbsolutePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => storage_path('app'
+                . DS . 'private'
+                . DS . $this->images_relative_path
+            ),
+        );
+    }
+
+    protected function imagesRelativePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => config('images.directory')
+                . DS . substr($this->filename, 0, -4),
+        );
+    }
 }
