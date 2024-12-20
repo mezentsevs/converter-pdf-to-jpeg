@@ -29,6 +29,11 @@ class DocumentService
         return $document;
     }
 
+    public function convert(Document $document): bool
+    {
+        return true;
+    }
+
     public function delete(Document $document): void
     {
         Storage::delete(config('documents.directory') . DS . $document->filename);

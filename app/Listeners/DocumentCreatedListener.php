@@ -35,9 +35,13 @@ class DocumentCreatedListener
                 ]));
             }
 
-            return redirect()
-                ->route('dashboard')
-                ->with('converted', __('documents.conversions.success'));
+            if ($this->documents->convert($event->document)) {
+                return redirect()
+                    ->route('dashboard')
+                    ->with('converted', __('documents.conversions.success'));
+            }
+
+            throw new \Exception;
         } catch (DocumentMaxPagesCountException $e) {
             return redirect()
                 ->route('dashboard')
