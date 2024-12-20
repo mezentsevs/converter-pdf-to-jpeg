@@ -39,8 +39,6 @@ class DocumentCreatedListener
                 ->route('dashboard')
                 ->with('converted', __('documents.conversions.success'));
         } catch (DocumentMaxPagesCountException $e) {
-            $this->documents->delete($event->document);
-
             return redirect()
                 ->route('dashboard')
                 ->with('error', $e->getMessage());
@@ -48,6 +46,8 @@ class DocumentCreatedListener
             return redirect()
                 ->route('dashboard')
                 ->with('error', __('documents.conversions.errors.common'));
+        } finally {
+            $this->documents->delete($event->document);
         }
     }
 }
