@@ -54,6 +54,8 @@ class ImagickDocumentConverter implements DocumentConverterInterface
                 $image->writeImage($document->images_absolute_path . DS . $imageFilename);
             }
 
+            $imagick->clear();
+
             return true;
         } catch (ImagickException) {
             return false;
