@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Events\DocumentCreatedEvent;
 use App\Events\DocumentDeletedEvent;
+use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -12,6 +13,8 @@ use Illuminate\Support\Str;
 
 class DocumentService
 {
+    public function __construct(protected DocumentConverterInterface $documentConverter) {}
+
     public function create(User $user, UploadedFile $file): Document
     {
         $ext = $file->extension();
@@ -31,7 +34,7 @@ class DocumentService
 
     public function convert(Document $document): bool
     {
-        return true;
+        return $this->documentConverter->convert($document);
     }
 
     public function delete(Document $document): void
