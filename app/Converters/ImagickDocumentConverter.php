@@ -2,6 +2,7 @@
 
 namespace App\Converters;
 
+use App\Helpers\StringHelper;
 use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
@@ -22,43 +23,76 @@ class ImagickDocumentConverter implements DocumentConverterInterface
 
     protected const int ROTATE_DEGREES = -90;
 
+    private Imagick $imagick;
+
+    public function __construct()
+    {
+        $this->imagick = new Imagick();
+
+        $this->setUp();
+    }
+
     public function convert(Document $document): bool
     {
         try {
-            $imagick = new Imagick();
+            $this->imagick->readImage($document->filepath);
 
-            $imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
+            Storage::makeDirectory($document->images_relative_path);
 
-            $imagick->readImage($document->filepath);
+            foreach ($this->imagick as $i => $image) {
+                $image = $this->setUpImage($image);
 
-            foreach ($imagick as $i => $image) {
-                $image->setImageColorspace(Imagick::COLORSPACE_RGB);
-
-                $image->setCompression(Imagick::COMPRESSION_JPEG);
-
-                $image->setCompressionQuality(self::COMPRESSION_QUALITY);
-
-                $image->setImageFormat(self::IMAGE_FORMAT);
-
-                if ($image->getImageWidth() > $image->getImageHeight()) {
-                    $image->rotateImage(self::ROTATE_BACKGROUND, self::ROTATE_DEGREES);
-                }
-
-                Storage::makeDirectory($document->images_relative_path);
-
-                $imageFilename = substr($document->filename, 0, -4)
-                    . (++$i < 10 ? "_0$i" : "_$i")
-                    . '.'
-                    . self::IMAGE_FORMAT;
+                $imageFilename = $this->makeImageFilename($document, (int) ++$i);
 
                 $image->writeImage($document->images_absolute_path . DS . $imageFilename);
             }
 
-            $imagick->clear();
-
             return true;
         } catch (ImagickException) {
             return false;
+        } finally {
+            $this->tearDown();
         }
+    }
+
+    public function __destruct()
+    {
+        $this->tearDown();
+    }
+
+    private function setUp(): void
+    {
+        $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
+    }
+
+    private function setUpImage(Imagick $image): Imagick
+    {
+        $image->setImageColorspace(Imagick::COLORSPACE_RGB);
+
+        $image->setCompression(Imagick::COMPRESSION_JPEG);
+
+        $image->setCompressionQuality(self::COMPRESSION_QUALITY);
+
+        $image->setImageFormat(self::IMAGE_FORMAT);
+
+        if ($image->getImageWidth() > $image->getImageHeight()) {
+            $image->rotateImage(self::ROTATE_BACKGROUND, self::ROTATE_DEGREES);
+        }
+
+        return $image;
+    }
+
+    private function makeImageFilename(Document $document, int $number): string
+    {
+        return substr($document->filename, 0, -4)
+            . '_'
+            . StringHelper::prependLessThanTenZero($number)
+            . '.'
+            . self::IMAGE_FORMAT;
+    }
+
+    private function tearDown(): void
+    {
+        $this->imagick->clear();
     }
 }
