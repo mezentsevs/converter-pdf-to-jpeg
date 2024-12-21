@@ -10,7 +10,7 @@ class PdfHelper
 
         $count = 0;
         foreach ($output as $line) {
-            if (preg_match("/Pages:\s*(\d+)/i", $line, $matches)) {
+            if (preg_match('/Pages:\s*(\d+)/i', $line, $matches)) {
                 $count = (int) $matches[1];
                 break;
             }
