@@ -5,6 +5,7 @@ namespace App\Converters;
 use App\Helpers\StringHelper;
 use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
 use ImagickException;
@@ -23,10 +24,14 @@ class ImagickDocumentConverter implements DocumentConverterInterface
 
     protected const int ROTATE_DEGREES = -90;
 
-    private Imagick $imagick;
+    protected ImageService $images;
+
+    protected Imagick $imagick;
 
     public function __construct()
     {
+        $this->images = app(ImageService::class);
+
         $this->imagick = new Imagick();
 
         $this->setUp();
@@ -44,7 +49,15 @@ class ImagickDocumentConverter implements DocumentConverterInterface
 
                 $imageFilename = $this->makeImageFilename($document, (int) ++$i);
 
-                $image->writeImage($document->images_absolute_path . DS . $imageFilename);
+                $imageFilepath = $document->images_absolute_path . DS . $imageFilename;
+
+                $image->writeImage($imageFilepath);
+
+                $this->images->create($document, [
+                    'filename' => $imageFilename,
+                    'type' => mime_content_type($imageFilepath),
+                    'size' => filesize($imageFilepath),
+                ]);
             }
 
             return true;
@@ -55,17 +68,12 @@ class ImagickDocumentConverter implements DocumentConverterInterface
         }
     }
 
-    public function __destruct()
-    {
-        $this->tearDown();
-    }
-
-    private function setUp(): void
+    protected function setUp(): void
     {
         $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
     }
 
-    private function setUpImage(Imagick $image): Imagick
+    protected function setUpImage(Imagick $image): Imagick
     {
         $image->setImageColorspace(Imagick::COLORSPACE_RGB);
 
@@ -82,7 +90,7 @@ class ImagickDocumentConverter implements DocumentConverterInterface
         return $image;
     }
 
-    private function makeImageFilename(Document $document, int $number): string
+    protected function makeImageFilename(Document $document, int $number): string
     {
         return substr($document->filename, 0, -4)
             . '_'
@@ -91,8 +99,13 @@ class ImagickDocumentConverter implements DocumentConverterInterface
             . self::IMAGE_FORMAT;
     }
 
-    private function tearDown(): void
+    protected function tearDown(): void
     {
         $this->imagick->clear();
+    }
+
+    public function __destruct()
+    {
+        $this->tearDown();
     }
 }

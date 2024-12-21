@@ -23,6 +23,8 @@ class DocumentCreatedListener
 
         try {
             if (($currentPagesCount = PdfHelper::countPages($event->document->filepath)) > config('documents.max_pages_count')) {
+                $this->documents->delete($event->document);
+
                 throw new DocumentMaxPagesCountException(__('documents.conversions.errors.max_pages_count', [
                     'current' => $currentPagesCount,
                     'max' => config('documents.max_pages_count'),
@@ -44,8 +46,6 @@ class DocumentCreatedListener
             return redirect()
                 ->route('dashboard')
                 ->with('error', __('documents.conversions.errors.common'));
-        } finally {
-            $this->documents->delete($event->document);
         }
     }
 }
