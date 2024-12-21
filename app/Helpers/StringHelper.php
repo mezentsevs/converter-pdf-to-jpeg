@@ -6,6 +6,6 @@ class StringHelper
 {
     public static function prependLessThanTenZero(int $number): string
     {
-        return $number < 10 ? "0$number" : "$number";
+        return sprintf("%02d", $number);
     }
 }
