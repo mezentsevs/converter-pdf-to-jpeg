@@ -33,14 +33,14 @@ class DocumentController extends Controller
 
         if (!$file?->isValid()) {
             return redirect()
-                ->route('dashboard')
+                ->route('result')
                 ->with('error', __('documents.uploads.errors.invalid'));
         }
 
         $this->documents->create($request->user(), $file);
 
         return redirect()
-            ->route('dashboard')
+            ->route('result')
             ->with('success', __('documents.uploads.success'));
     }
 

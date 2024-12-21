@@ -33,18 +33,18 @@ class DocumentCreatedListener
 
             if ($this->documents->convert($event->document)) {
                 return redirect()
-                    ->route('dashboard')
+                    ->route('result')
                     ->with('converted', __('documents.conversions.success'));
             }
 
             throw new \Exception;
         } catch (DocumentMaxPagesCountException $e) {
             return redirect()
-                ->route('dashboard')
+                ->route('result')
                 ->with('error', $e->getMessage());
         } catch (\Exception) {
             return redirect()
-                ->route('dashboard')
+                ->route('result')
                 ->with('error', __('documents.conversions.errors.common'));
         }
     }
