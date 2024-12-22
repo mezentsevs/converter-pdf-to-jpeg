@@ -2,32 +2,26 @@
 
 namespace App\Services;
 
+use App\Dtos\DocumentCreateDto;
 use App\Events\DocumentCreatedEvent;
 use App\Events\DocumentDeletedEvent;
 use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
-use App\Models\User;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class DocumentService
 {
     public function __construct(protected DocumentConverterInterface $documentConverter) {}
 
-    public function create(User $user, UploadedFile $file): Document
+    public function create(DocumentCreateDto $dto): Document
     {
-        $ext = $file->extension();
-        $hash = Str::of($file->hashName())->basename(".{$ext}");
-        $slug = Str::of($file->getClientOriginalName())->basename(".{$ext}")->slug('_');
-
-        $document = $user->documents()->create([
-            'filename' => basename($file->storeAs(config('documents.directory'), "{$hash}_{$slug}.{$ext}")),
-            'type' => $file->getMimeType(),
-            'size' => $file->getSize(),
+        $document = $dto->user->documents()->create([
+            'filename' => $dto->filename,
+            'type' => $dto->type,
+            'size' => $dto->size,
         ]);
 
-        event(new DocumentCreatedEvent($user, $document));
+        event(new DocumentCreatedEvent($dto->user, $document));
 
         return $document;
     }

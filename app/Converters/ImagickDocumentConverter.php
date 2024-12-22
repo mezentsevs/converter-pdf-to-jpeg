@@ -2,6 +2,7 @@
 
 namespace App\Converters;
 
+use App\Factories\ImageCreateDtoFactory;
 use App\Helpers\StringHelper;
 use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
@@ -53,11 +54,12 @@ class ImagickDocumentConverter implements DocumentConverterInterface
 
                 $image->writeImage($imageFilepath);
 
-                $this->images->create($document, [
+                $this->images->create(ImageCreateDtoFactory::fromArray([
+                    'document' => $document,
                     'filename' => $imageFilename,
                     'type' => mime_content_type($imageFilepath),
                     'size' => filesize($imageFilepath),
-                ]);
+                ]));
             }
 
             return true;

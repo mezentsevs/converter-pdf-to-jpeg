@@ -2,21 +2,21 @@
 
 namespace App\Services;
 
+use App\Dtos\ImageCreateDto;
 use App\Events\ImageCreatedEvent;
-use App\Models\Document;
 use App\Models\Image;
 
 class ImageService
 {
-    public function create(Document $document, array $data): Image
+    public function create(ImageCreateDto $dto): Image
     {
-        $image = $document->images()->create([
-            'filename' => $data['filename'],
-            'type' => $data['type'],
-            'size' => $data['size'],
+        $image = $dto->document->images()->create([
+            'filename' => $dto->filename,
+            'type' => $dto->type,
+            'size' => $dto->size,
         ]);
 
-        event(new ImageCreatedEvent($document->user, $image));
+        event(new ImageCreatedEvent($dto->document->user, $image));
 
         return $image;
     }

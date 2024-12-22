@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\DocumentCreateDtoFactory;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
+use App\Http\UploadedFile;
 use App\Models\Document;
 use App\Services\DocumentService;
+use App\Traits\UploadedFileable;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentController extends Controller
 {
+    use UploadedFileable;
+
     protected DocumentService $documents;
 
     public function __construct()
@@ -37,7 +42,13 @@ class DocumentController extends Controller
                 ->with('error', __('documents.uploads.errors.invalid'));
         }
 
-        $this->documents->create($request->user(), $file);
+        /**
+         * @var UploadedFile $file
+         */
+        $file->user = $request->user();
+        $file->filename = basename($file->storeAs(config('documents.directory'), $this->makeUploadedFileName($file)));
+
+        $this->documents->create(DocumentCreateDtoFactory::fromUploadedFile($file));
 
         return redirect()
             ->route('result')
