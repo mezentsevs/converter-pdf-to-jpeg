@@ -21,7 +21,7 @@ class DocumentService
             'size' => $dto->size,
         ]);
 
-        event(new DocumentCreatedEvent($dto->user, $document));
+        event(new DocumentCreatedEvent($document));
 
         return $document;
     }

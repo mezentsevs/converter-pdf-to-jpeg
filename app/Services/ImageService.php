@@ -16,7 +16,7 @@ class ImageService
             'size' => $dto->size,
         ]);
 
-        event(new ImageCreatedEvent($dto->document->user, $image));
+        event(new ImageCreatedEvent($image));
 
         return $image;
     }
