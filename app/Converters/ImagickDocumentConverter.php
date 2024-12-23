@@ -2,16 +2,20 @@
 
 namespace App\Converters;
 
+use App\Exceptions\DocumentConvertException;
+use App\Exceptions\DocumentConvertReadDocumentException;
+use App\Exceptions\DocumentConvertSetUpException;
+use App\Exceptions\DocumentConvertTearDownException;
 use App\Factories\ImageCreateDtoFactory;
 use App\Helpers\StringHelper;
-use App\Interfaces\DocumentConverterInterface;
 use App\Models\Document;
 use App\Services\ImageService;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
 use ImagickException;
 
-class ImagickDocumentConverter implements DocumentConverterInterface
+class ImagickDocumentConverter extends AbstractDocumentConverter
 {
     protected const int X_RESOLUTION = 300;
 
@@ -27,22 +31,43 @@ class ImagickDocumentConverter implements DocumentConverterInterface
 
     protected ImageService $images;
 
-    protected Imagick $imagick;
-
-    public function __construct()
+    public function __construct(protected Imagick $imagick)
     {
         $this->images = app(ImageService::class);
-
-        $this->imagick = new Imagick();
-
-        $this->setUp();
     }
 
-    public function convert(Document $document): bool
+    /**
+     * @throws DocumentConvertSetUpException
+     */
+    protected function setUp(): void
+    {
+        try {
+            $this->imagick = new Imagick();
+
+            $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
+        } catch (Exception | ImagickException) {
+            throw new DocumentConvertSetUpException;
+        }
+    }
+
+    /**
+     * @throws DocumentConvertReadDocumentException
+     */
+    protected function readDocument(Document $document): void
     {
         try {
             $this->imagick->readImage($document->filepath);
+        } catch (Exception | ImagickException) {
+            throw new DocumentConvertReadDocumentException;
+        }
+    }
 
+    /**
+     * @throws DocumentConvertException
+     */
+    protected function convertDocument(Document $document): void
+    {
+        try {
             Storage::makeDirectory($document->images_relative_path);
 
             foreach ($this->imagick as $i => $image) {
@@ -61,21 +86,24 @@ class ImagickDocumentConverter implements DocumentConverterInterface
                     'size' => filesize($imageFilepath),
                 ]));
             }
-
-            return true;
-        } catch (ImagickException) {
-            return false;
-        } finally {
-            $this->tearDown();
+        } catch (Exception | ImagickException) {
+            throw new DocumentConvertException;
         }
     }
 
-    protected function setUp(): void
+    /**
+     * @throws DocumentConvertTearDownException
+     */
+    protected function tearDown(): void
     {
-        $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
+        try {
+            $this->imagick->clear();
+        } catch (Exception | ImagickException) {
+            throw new DocumentConvertTearDownException;
+        }
     }
 
-    protected function setUpImage(Imagick $image): Imagick
+    private function setUpImage(Imagick $image): Imagick
     {
         $image->setImageColorspace(Imagick::COLORSPACE_RGB);
 
@@ -92,22 +120,12 @@ class ImagickDocumentConverter implements DocumentConverterInterface
         return $image;
     }
 
-    protected function makeImageFilename(Document $document, int $number): string
+    private function makeImageFilename(Document $document, int $number): string
     {
         return substr($document->filename, 0, -4)
             . '_'
             . StringHelper::prependLessThanTenZero($number)
             . '.'
             . self::IMAGE_FORMAT;
-    }
-
-    protected function tearDown(): void
-    {
-        $this->imagick->clear();
-    }
-
-    public function __destruct()
-    {
-        $this->tearDown();
     }
 }
