@@ -40,7 +40,7 @@ class Document extends Model
     {
         return Attribute::make(
             get: fn () => storage_path('app'
-                . DS . 'private'
+                . DS . 'public'
                 . DS . $this->images_relative_path
             ),
         );

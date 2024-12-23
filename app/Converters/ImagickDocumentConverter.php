@@ -68,7 +68,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
     protected function convertDocument(Document $document): void
     {
         try {
-            Storage::makeDirectory($document->images_relative_path);
+            Storage::disk('public')->makeDirectory($document->images_relative_path);
 
             foreach ($this->imagick as $i => $image) {
                 $image = $this->setUpImage($image);
