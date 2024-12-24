@@ -52,7 +52,7 @@ class DocumentController extends Controller
 
         return redirect()
             ->route('result')
-            ->with('success', __('documents.uploads.success'));
+            ->with('uploaded', __('documents.uploads.success'));
     }
 
     public function show(Document $document)
