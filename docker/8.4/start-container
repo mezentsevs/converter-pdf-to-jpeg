@@ -15,6 +15,8 @@ fi
 
 chmod -R ugo+rw /.composer
 
+bash /usr/local/bin/entry.sh
+
 if [ $# -gt 0 ]; then
     if [ "$SUPERVISOR_PHP_USER" = "root" ]; then
         exec "$@"
