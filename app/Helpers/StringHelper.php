@@ -8,4 +8,14 @@ class StringHelper
     {
         return sprintf('%02d', $number);
     }
+
+    public static function trimExt(string $filename): string
+    {
+        return pathinfo($filename, PATHINFO_FILENAME);
+    }
+
+    public static function trimHash(string $filename): string
+    {
+        return substr($filename, stripos($filename, '_') + 1);
+    }
 }

@@ -122,7 +122,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
 
     private function makeImageFilename(Document $document, int $number): string
     {
-        return substr($document->filename, 0, -4)
+        return StringHelper::trimExt(StringHelper::trimHash($document->filename))
             . '_'
             . StringHelper::prependLessThanTenZero($number)
             . '.'

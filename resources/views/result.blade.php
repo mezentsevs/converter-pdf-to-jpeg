@@ -40,4 +40,16 @@
             </div>
         </div>
     @endif
+
+    @if(session('slides'))
+        @foreach(session('slides') as $slide)
+            <div class="py-2">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <img src="{{ $slide }}" alt="{{ $slide }}">
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endif
 </x-app-layout>

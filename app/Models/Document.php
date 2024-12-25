@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\StringHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -50,7 +51,7 @@ class Document extends Model
     {
         return Attribute::make(
             get: fn () => config('images.directory')
-                . DS . substr($this->filename, 0, -4),
+                . DS . StringHelper::trimExt($this->filename),
         );
     }
 }
