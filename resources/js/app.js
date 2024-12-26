@@ -8,7 +8,5 @@ window.Slider = Slider;
 Alpine.start();
 
 if (typeof slides !== 'undefined') {
-    window.addEventListener('load', function () {
-        Slider.init();
-    });
+    window.addEventListener('load', () => Slider.init());
 }
