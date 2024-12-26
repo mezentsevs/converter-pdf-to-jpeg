@@ -6,48 +6,18 @@
     </x-slot>
 
     @if(session('uploaded'))
-        <div class="py-2">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-2 text-green-600 dark:text-green-300">
-                        {{ session('uploaded') }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-message-success>{{ session('uploaded') }}</x-message-success>
     @endif
 
     @if(session('error'))
-        <div class="py-2">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-2 text-red-600 dark:text-red-300">
-                        {{ session('error') }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-message-error>{{ session('error') }}</x-message-error>
     @endif
 
     @if(session('converted'))
-        <div class="py-2">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-2 text-green-600 dark:text-green-300">
-                        {{ session('converted') }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-message-success>{{ session('converted') }}</x-message-success>
     @endif
 
     @if(session('slides'))
-        <div class="py-2">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <x-slider></x-slider>
-                </div>
-            </div>
-        </div>
+        <x-slider></x-slider>
     @endif
 </x-app-layout>
