@@ -32,5 +32,12 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @if(session('slides'))
+            <!-- Set Slides -->
+            @php
+                echo '<script>const slides = [\'' . implode('\', \'', session('slides')) . '\']</script>';
+            @endphp
+        @endif
     </body>
 </html>
