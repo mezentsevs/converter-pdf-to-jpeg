@@ -2,9 +2,9 @@
     <div class="max-w-3xl mx-auto">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <figure id="slider" class="p-6 flex justify-between items-center">
-                <x-primary-button id="prev" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.prev()">
+                <x-secondary-button id="prev" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.prev()">
                     &lt;
-                </x-primary-button>
+                </x-secondary-button>
 
                 <img
                     id="slide"
@@ -13,9 +13,9 @@
                     alt="{{ __('Slide') }}"
                 >
 
-                <x-primary-button id="next" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.next()">
+                <x-secondary-button id="next" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.next()">
                     &gt;
-                </x-primary-button>
+                </x-secondary-button>
             </figure>
         </div>
     </div>
