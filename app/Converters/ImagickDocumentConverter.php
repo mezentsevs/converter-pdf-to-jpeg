@@ -92,7 +92,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
                 ]));
             }
 
-            $this->sliders->writeIndexHtmlFile($document);
+            $this->sliders->writeIndexHtml($document);
         } catch (Exception | ImagickException) {
             throw new DocumentConvertException;
         }

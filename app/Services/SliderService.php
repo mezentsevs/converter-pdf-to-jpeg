@@ -22,7 +22,7 @@ class SliderService
         return $slides;
     }
 
-    public function writeIndexHtmlFile(Document $document): void
+    public function writeIndexHtml(Document $document): void
     {
         Storage::disk('public')->put(
             $document->slider_relative_path . DS . 'index.html',
