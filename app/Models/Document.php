@@ -78,7 +78,8 @@ class Document extends Model
     {
         return Attribute::make(
             get: fn () => config('images.directory')
-                . DS . StringHelper::trimExt($this->filename),
+                . DS . StringHelper::trimExt($this->filename)
+                . DS . config('sliders.images.directory'),
         );
     }
 }
