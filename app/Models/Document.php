@@ -68,7 +68,7 @@ class Document extends Model
     protected function sliderRelativePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => config('images.directory')
+            get: fn () => config('sliders.directory')
                 . DS . StringHelper::trimExt($this->filename),
         );
     }
@@ -77,7 +77,7 @@ class Document extends Model
     {
         return Attribute::make(
             get: fn () => $this->slider_relative_path
-                . DS . config('sliders.images.directory'),
+                . DS . config('images.directory'),
         );
     }
 

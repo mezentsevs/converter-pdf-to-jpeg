@@ -34,7 +34,7 @@ class SliderService
     {
         $slides = implode("',\n" . str_repeat(' ', 16) . '\''
             , Arr::map($this->getSlides($document), function (string $slide): string {
-                return config('sliders.images.directory') . DS . basename($slide);
+                return config('images.directory') . DS . basename($slide);
             }),
         );
 

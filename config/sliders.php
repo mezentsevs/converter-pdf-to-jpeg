@@ -11,8 +11,6 @@ return [
     |
     */
 
-    'images' => [
-        'directory' => env('SLIDERS_IMAGES_DIRECTORY', 'images'),
-    ],
+    'directory' => env('SLIDERS_DIRECTORY', 'sliders'),
 
 ];
