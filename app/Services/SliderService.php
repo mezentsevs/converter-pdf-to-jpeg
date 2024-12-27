@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Document;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class SliderService
 {
@@ -21,7 +22,15 @@ class SliderService
         return $slides;
     }
 
-    public function getIndexHtml(Document $document): string
+    public function writeIndexHtmlFile(Document $document): void
+    {
+        Storage::disk('public')->put(
+            $document->slider_relative_path . DS . 'index.html',
+            $this->getContentForIndexHtml($document),
+        );
+    }
+
+    private function getContentForIndexHtml(Document $document): string
     {
         $slides = implode("',\n" . str_repeat(' ', 16) . '\''
             , Arr::map($this->getSlides($document), function (string $slide): string {

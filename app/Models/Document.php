@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $images_count
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
+ * @property-read mixed $slider_relative_path
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Document newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Document newQuery()
@@ -64,6 +65,22 @@ class Document extends Model
         );
     }
 
+    protected function sliderRelativePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => config('images.directory')
+                . DS . StringHelper::trimExt($this->filename),
+        );
+    }
+
+    protected function imagesRelativePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->slider_relative_path
+                . DS . config('sliders.images.directory'),
+        );
+    }
+
     protected function imagesAbsolutePath(): Attribute
     {
         return Attribute::make(
@@ -71,15 +88,6 @@ class Document extends Model
                 . DS . 'public'
                 . DS . $this->images_relative_path
             ),
-        );
-    }
-
-    protected function imagesRelativePath(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => config('images.directory')
-                . DS . StringHelper::trimExt($this->filename)
-                . DS . config('sliders.images.directory'),
         );
     }
 }

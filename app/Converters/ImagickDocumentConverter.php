@@ -10,6 +10,7 @@ use App\Factories\ImageCreateDtoFactory;
 use App\Helpers\StringHelper;
 use App\Models\Document;
 use App\Services\ImageService;
+use App\Services\SliderService;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
@@ -31,9 +32,13 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
 
     protected ImageService $images;
 
+    protected SliderService $sliders;
+
     public function __construct(protected Imagick $imagick)
     {
         $this->images = app(ImageService::class);
+
+        $this->sliders = app(SliderService::class);
     }
 
     /**
@@ -86,6 +91,8 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
                     'size' => filesize($imageFilepath),
                 ]));
             }
+
+            $this->sliders->writeIndexHtmlFile($document);
         } catch (Exception | ImagickException) {
             throw new DocumentConvertException;
         }
