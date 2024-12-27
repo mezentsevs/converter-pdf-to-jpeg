@@ -103,6 +103,9 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         }
     }
 
+    /**
+     * @throws ImagickException
+     */
     private function setUpImage(Imagick $image): Imagick
     {
         $image->setImageColorspace(Imagick::COLORSPACE_RGB);
