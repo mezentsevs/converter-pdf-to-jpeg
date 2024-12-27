@@ -6,7 +6,7 @@ use App\Models\Document;
 
 class SliderService
 {
-    public function getSlidesForDocument(Document $document): array
+    public function getSlides(Document $document): array
     {
         $slides = [];
 

@@ -40,7 +40,7 @@ class DocumentCreatedListener
                 return redirect()
                     ->route('result')
                     ->with('converted', __('documents.conversions.success'))
-                    ->with('slides', $this->sliders->getSlidesForDocument($event->document));
+                    ->with('slides', $this->sliders->getSlides($event->document));
             }
 
             throw new \Exception;
