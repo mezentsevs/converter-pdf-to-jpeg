@@ -1,8 +1,8 @@
 <div class="py-2">
     <div class="max-w-3xl mx-auto">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <figure id="slider" class="p-6 flex justify-between items-center">
-                <x-secondary-button id="prev" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.prev()">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg text-center">
+            <figure class="mt-5 flex justify-evenly items-center">
+                <x-secondary-button id="prev" class="m-5 h-8" onclick="Slider.prev()">
                     &lt;
                 </x-secondary-button>
 
@@ -13,10 +13,19 @@
                     alt="{{ __('Slide') }}"
                 >
 
-                <x-secondary-button id="next" class="mt-5 sm:m-5 lg:m-5 h-8" onclick="Slider.next()">
+                <x-secondary-button id="next" class="m-5 h-8" onclick="Slider.next()">
                     &gt;
                 </x-secondary-button>
             </figure>
+
+            @if(session('document'))
+                <x-primary-button
+                    class="m-5 h-8"
+                    onclick="window.location.href = '{{ route('document.download-slider', ['document' => session('document')]) }}';"
+                >
+                    {{ __('documents.downloads.sliders.button') }}
+                </x-primary-button>
+            @endif
         </div>
     </div>
 </div>

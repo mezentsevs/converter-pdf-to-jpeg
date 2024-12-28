@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocumentCreateDtoFactory;
+use App\Http\Requests\DownloadSliderDocumentRequest;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\UploadedFile;
@@ -71,6 +72,11 @@ class DocumentController extends Controller
     }
 
     public function destroy(Document $document)
+    {
+        //
+    }
+
+    public function downloadSlider(DownloadSliderDocumentRequest $request, Document $document): void
     {
         //
     }

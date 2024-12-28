@@ -18,6 +18,11 @@ return [
         ],
         'success' => 'Converted successfully.',
     ],
+    'downloads' => [
+        'sliders' => [
+            'button' => 'Download',
+        ],
+    ],
     'uploads' => [
         'button' => 'Convert',
         'errors' => [

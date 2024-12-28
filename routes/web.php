@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/document', [DocumentController::class, 'store'])->name('document.store');
+    Route::get('/document/{document}/download-slider', [DocumentController::class, 'downloadSlider'])
+        ->name('document.download-slider');
 
     Route::get('/result', function () {
         return view('result');

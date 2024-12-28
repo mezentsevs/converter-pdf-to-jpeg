@@ -41,4 +41,9 @@ class DocumentPolicy
     {
         return false;
     }
+
+    public function downloadSlider(User $user, Document $document): bool
+    {
+        return $user->id === $document->user_id;
+    }
 }
