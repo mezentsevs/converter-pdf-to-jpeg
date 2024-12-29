@@ -5,11 +5,11 @@ namespace App\Traits;
 use App\Helpers\StringHelper;
 use App\Models\Document;
 
-trait DocumentArchiveable
+trait SliderArchiveable
 {
-    protected function makeDocumentArchiveFullPath(Document $document, string $archiveExt): string
+    protected function makeSliderArchiveFullPath(Document $document, string $archiveExt): string
     {
-        return $document->archive_absolute_path
+        return $document->slider_archive_absolute_path
             . DS . StringHelper::trimHashAndExt($document->filename)
             . SD
             . $archiveExt;

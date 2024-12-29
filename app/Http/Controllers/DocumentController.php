@@ -10,13 +10,15 @@ use App\Http\UploadedFile;
 use App\Interfaces\ArchiverInterface;
 use App\Models\Document;
 use App\Services\DocumentService;
-use App\Traits\DocumentArchiveable;
+use App\Traits\SliderArchiveable;
 use App\Traits\UploadedFileable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DocumentController extends Controller
 {
-    use UploadedFileable, DocumentArchiveable;
+    use UploadedFileable, SliderArchiveable;
 
     protected DocumentService $documents;
 
@@ -78,8 +80,14 @@ class DocumentController extends Controller
         //
     }
 
-    public function downloadSlider(DownloadSliderDocumentRequest $request, Document $document): void
+    public function downloadSlider(DownloadSliderDocumentRequest $request, Document $document): BinaryFileResponse
     {
-        //
+        Storage::disk('public')->makeDirectory($document->slider_archive_relative_path);
+
+        $path = $this->makeSliderArchiveFullPath($document, $this->archiver->archiveExt);
+
+        $this->archiver->makeArchive($document->slider_absolute_path, $path);
+
+        return response()->download($path);
     }
 }

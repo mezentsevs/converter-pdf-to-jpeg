@@ -24,10 +24,10 @@ use Illuminate\Support\Carbon;
  * @property-read mixed $filepath
  * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
- * @property-read mixed $archive_absolute_path
- * @property-read mixed $archive_relative_path
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
+ * @property-read mixed $slider_archive_absolute_path
+ * @property-read mixed $slider_archive_relative_path
  * @property-read mixed $slider_absolute_path
  * @property-read mixed $slider_relative_path
  * @property-read User $user
@@ -106,7 +106,7 @@ class Document extends Model
         );
     }
 
-    protected function archiveRelativePath(): Attribute
+    protected function sliderArchiveRelativePath(): Attribute
     {
         return Attribute::make(
             get: fn () => config('archives.directory')
@@ -114,12 +114,12 @@ class Document extends Model
         );
     }
 
-    protected function archiveAbsolutePath(): Attribute
+    protected function sliderArchiveAbsolutePath(): Attribute
     {
         return Attribute::make(
             get: fn () => storage_path('app'
                 . DS . 'public'
-                . DS . $this->archive_relative_path),
+                . DS . $this->slider_archive_relative_path),
         );
     }
 }
