@@ -11,12 +11,12 @@ use ZipArchive;
 
 class ZipArchiver implements ArchiverInterface
 {
-    private const string EXTENSION_NAME = 'zip';
+    private const string PHP_EXTENSION_NAME = 'zip';
 
     public function makeArchive(string $source, string $destination): bool
     {
         try {
-            if (!extension_loaded(self::EXTENSION_NAME) || !file_exists($source)) {
+            if (!extension_loaded(self::PHP_EXTENSION_NAME) || !file_exists($source)) {
                 throw new ArchiveMakeException;
             }
 
