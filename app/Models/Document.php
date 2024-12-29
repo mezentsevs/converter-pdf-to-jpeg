@@ -24,6 +24,8 @@ use Illuminate\Support\Carbon;
  * @property-read mixed $filepath
  * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
+ * @property-read mixed $archive_absolute_path
+ * @property-read mixed $archive_relative_path
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
  * @property-read mixed $slider_absolute_path
@@ -101,6 +103,23 @@ class Document extends Model
                 . DS . 'public'
                 . DS . $this->images_relative_path
             ),
+        );
+    }
+
+    protected function archiveRelativePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => config('archives.directory')
+                . DS . StringHelper::trimExt($this->filename),
+        );
+    }
+
+    protected function archiveAbsolutePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => storage_path('app'
+                . DS . 'public'
+                . DS . $this->archive_relative_path),
         );
     }
 }
