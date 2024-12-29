@@ -18,4 +18,14 @@ class StringHelper
     {
         return substr($filename, stripos($filename, '_') + 1);
     }
+
+    public static function trimBaseFromPath(string $base, string $path): string
+    {
+        return str_replace($base . DS, '', $path);
+    }
+
+    public static function replaceSlashesWithDS(string $path): string
+    {
+        return str_replace(['/', '\\'], DS, $path);
+    }
 }

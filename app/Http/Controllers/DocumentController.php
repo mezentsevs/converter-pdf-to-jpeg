@@ -7,6 +7,7 @@ use App\Http\Requests\DownloadSliderDocumentRequest;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\UploadedFile;
+use App\Interfaces\ArchiverInterface;
 use App\Models\Document;
 use App\Services\DocumentService;
 use App\Traits\UploadedFileable;
@@ -18,7 +19,7 @@ class DocumentController extends Controller
 
     protected DocumentService $documents;
 
-    public function __construct()
+    public function __construct(protected ArchiverInterface $archiver)
     {
         $this->documents = app(DocumentService::class);
     }

@@ -40,6 +40,8 @@ class SliderService
 
         $appName = __('app.name');
 
+        $year = date('Y');
+
         return <<<EOD
             <!DOCTYPE html>
             <html lang="en">
@@ -79,7 +81,7 @@ class SliderService
                     window.addEventListener('load', () => slider.init());
                 </script>
                 <body>
-                    <header><h1>Slider</h1></header>
+                    <header><h1>{$appName}</h1></header>
                     <main>
                         <figure id="slider">
                             <img id="slide" src="" alt="Slide">
@@ -87,7 +89,7 @@ class SliderService
                             <button id="next" onclick="slider.next()">&gt;</button>
                         </figure>
                     </main>
-                    <footer><small>&copy; {$appName}</small></footer>
+                    <footer><small>&copy; {$year} {$appName} All rights reserved</small></footer>
                 </body>
             </html>
             EOD;

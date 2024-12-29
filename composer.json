@@ -14,7 +14,8 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "ext-imagick": "*",
-        "ext-fileinfo": "*"
+        "ext-fileinfo": "*",
+        "ext-zip": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
