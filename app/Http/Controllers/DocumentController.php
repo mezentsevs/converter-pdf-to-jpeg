@@ -86,7 +86,9 @@ class DocumentController extends Controller
 
         $path = $this->makeSliderArchiveFullPath($document, $this->archiver->archiveExt);
 
-        $this->archiver->makeArchive($document->slider_absolute_path, $path);
+        if (!$this->archiver->makeArchive($document->slider_absolute_path, $path)) {
+            abort(520);
+        }
 
         return response()->download($path);
     }
