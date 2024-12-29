@@ -137,7 +137,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         return StringHelper::trimHashAndExt($document->filename)
             . '_'
             . StringHelper::prependLessThanTenZero($number)
-            . '.'
+            . SD
             . $this->imageExt;
     }
 }

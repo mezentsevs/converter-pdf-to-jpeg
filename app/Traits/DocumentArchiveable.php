@@ -11,7 +11,7 @@ trait DocumentArchiveable
     {
         return $document->archive_absolute_path
             . DS . StringHelper::trimHashAndExt($document->filename)
-            . '.'
+            . SD
             . $archiveExt;
     }
 }
