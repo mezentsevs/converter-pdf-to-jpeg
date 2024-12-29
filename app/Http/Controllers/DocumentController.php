@@ -10,12 +10,13 @@ use App\Http\UploadedFile;
 use App\Interfaces\ArchiverInterface;
 use App\Models\Document;
 use App\Services\DocumentService;
+use App\Traits\DocumentArchiveable;
 use App\Traits\UploadedFileable;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentController extends Controller
 {
-    use UploadedFileable;
+    use UploadedFileable, DocumentArchiveable;
 
     protected DocumentService $documents;
 

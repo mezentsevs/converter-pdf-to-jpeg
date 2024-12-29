@@ -30,7 +30,7 @@ class SliderService
         );
     }
 
-    private function getContentForIndexHtml(Document $document): string
+    protected function getContentForIndexHtml(Document $document): string
     {
         $slides = implode("',\n" . str_repeat(' ', 16) . '\''
             , Arr::map($this->getSlides($document), function (string $slide): string {

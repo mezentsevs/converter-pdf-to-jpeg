@@ -18,6 +18,8 @@ use ImagickException;
 
 class ImagickDocumentConverter extends AbstractDocumentConverter
 {
+    public string $imageExt = 'jpeg';
+
     protected const int X_RESOLUTION = 300;
 
     protected const int Y_RESOLUTION = 300;
@@ -113,7 +115,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
     /**
      * @throws ImagickException
      */
-    private function setUpImage(Imagick $image): Imagick
+    protected function setUpImage(Imagick $image): Imagick
     {
         $image->setImageColorspace(Imagick::COLORSPACE_RGB);
 
@@ -130,12 +132,12 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         return $image;
     }
 
-    private function makeImageFilename(Document $document, int $number): string
+    protected function makeImageFilename(Document $document, int $number): string
     {
-        return StringHelper::trimExt(StringHelper::trimHash($document->filename))
+        return StringHelper::trimHashAndExt($document->filename)
             . '_'
             . StringHelper::prependLessThanTenZero($number)
             . '.'
-            . self::IMAGE_FORMAT;
+            . $this->imageExt;
     }
 }

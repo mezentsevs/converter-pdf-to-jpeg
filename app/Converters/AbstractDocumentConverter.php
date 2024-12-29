@@ -11,6 +11,10 @@ use App\Models\Document;
 
 abstract class AbstractDocumentConverter implements DocumentConverterInterface
 {
+    abstract public string $imageExt {
+        get;
+    }
+
     final public function convert(Document $document): bool
     {
         try {

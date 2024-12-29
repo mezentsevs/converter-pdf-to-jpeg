@@ -19,6 +19,11 @@ class StringHelper
         return substr($filename, stripos($filename, '_') + 1);
     }
 
+    public static function trimHashAndExt(string $filename): string
+    {
+        return self::trimExt(self::trimHash($filename));
+    }
+
     public static function trimBaseFromPath(string $base, string $path): string
     {
         return str_replace($base . DS, '', $path);

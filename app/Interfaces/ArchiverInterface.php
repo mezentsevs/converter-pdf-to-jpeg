@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface ArchiverInterface
 {
-    public string $ext {
+    public string $archiveExt {
         get;
     }
 

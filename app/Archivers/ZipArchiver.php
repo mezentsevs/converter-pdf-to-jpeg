@@ -11,9 +11,9 @@ use ZipArchive;
 
 class ZipArchiver implements ArchiverInterface
 {
-    public string $ext = 'zip';
+    public string $archiveExt = 'zip';
 
-    private const string PHP_EXTENSION_NAME = 'zip';
+    protected const string PHP_EXTENSION_NAME = 'zip';
 
     public function makeArchive(string $source, string $destination): bool
     {
