@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use App\Helpers\StringHelper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Document
@@ -16,25 +19,26 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $filename
  * @property string $type
  * @property int $size
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property-read mixed $filepath
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Image> $images
+ * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
+ * @property-read mixed $slider_absolute_path
  * @property-read mixed $slider_relative_path
- * @property-read \App\Models\User $user
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereFilename($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereSize($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Document whereUserId($value)
+ * @property-read User $user
+ * @method static Builder<static>|Document newModelQuery()
+ * @method static Builder<static>|Document newQuery()
+ * @method static Builder<static>|Document query()
+ * @method static Builder<static>|Document whereCreatedAt($value)
+ * @method static Builder<static>|Document whereFilename($value)
+ * @method static Builder<static>|Document whereId($value)
+ * @method static Builder<static>|Document whereSize($value)
+ * @method static Builder<static>|Document whereType($value)
+ * @method static Builder<static>|Document whereUpdatedAt($value)
+ * @method static Builder<static>|Document whereUserId($value)
  */
 class Document extends Model
 {
@@ -70,6 +74,15 @@ class Document extends Model
         return Attribute::make(
             get: fn () => config('sliders.directory')
                 . DS . StringHelper::trimExt($this->filename),
+        );
+    }
+
+    protected function sliderAbsolutePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => storage_path('app'
+                . DS . 'public'
+                . DS . $this->slider_relative_path),
         );
     }
 

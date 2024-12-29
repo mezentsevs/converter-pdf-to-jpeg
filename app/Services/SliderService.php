@@ -47,7 +47,7 @@ class SliderService
             <html lang="en">
                 <head>
                     <meta charset="utf-8">
-                    <title>Slider</title>
+                    <title>{$appName}</title>
                 </head>
                 <style>
                     body { margin: 0; font-family: Arial, serif; font-size: 1em; }
