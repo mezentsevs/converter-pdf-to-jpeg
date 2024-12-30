@@ -23,13 +23,13 @@
         <div class="bg-gray-100 text-black/50 dark:bg-gray-900 dark:text-white/50">
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                    <header class="min-w-[460px] grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3 bg-white dark:bg-gray-800 rounded-lg shadow">
+                    <header class="min-w-[460px] grid grid-cols-2 items-center gap-2 py-2 lg:grid-cols-3 bg-white dark:bg-gray-800 rounded-lg shadow">
                         <div class="flex lg:justify-center lg:col-start-2">
-                            <h1 class="ml-3 tracking-tighter text-nowrap text-[#FF2D20] border border-current">
-                                <span class="text-2xl uppercase font-bold pl-[80px]">Converter</span>
-                                <span class="inline-block -translate-x-[50px] -translate-y-[25px] rotate-12 bg-[#FF2D20] text-white px-1 rounded">pdf to jpeg</span>
-                            </h1>
+                            <a href="/" class="inline-block w-[100px] h-[100px]">
+                                <x-application-logo class="scale-[0.5]" />
+                            </a>
                         </div>
+
                         @if (Route::has('login'))
                             <nav class="flex flex-1 justify-end text-nowrap">
                                 @auth
