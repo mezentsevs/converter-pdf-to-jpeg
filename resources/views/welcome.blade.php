@@ -63,11 +63,17 @@
                         @endif
                     </header>
 
-                    <main class="min-h-96 mt-6 text-center flex flex-col justify-center">
-                        <p>This is a converter pdf to jpeg written in and for educational purposes.</p>
+                    <main class="min-h-96 mt-6 text-center text-black dark:text-white/70 flex flex-col justify-center">
+                        <p>
+                            This is a converter
+                            <span class="font-medium text-[#818DF8]">pdf</span>
+                            to
+                            <span class="font-medium text-[#818DF8]">jpeg</span>
+                            written in and for educational purposes.
+                        </p>
                     </main>
 
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
+                    <footer class="py-16 text-center text-sm">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </footer>
                 </div>
