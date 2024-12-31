@@ -7,6 +7,7 @@ use App\Exceptions\DocumentMaxPagesCountException;
 use App\Helpers\PdfHelper;
 use App\Services\DocumentService;
 use App\Services\SliderService;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentCreatedListener
@@ -37,21 +38,22 @@ class DocumentCreatedListener
             }
 
             if ($this->documents->convert($event->document)) {
+                session()->put('slides', $this->sliders->getSlides($event->document));
+
                 return redirect()
                     ->route('result')
                     ->with([
                         'document' => $event->document,
                         'converted' => __('documents.conversions.success'),
-                        'slides' => $this->sliders->getSlides($event->document),
                     ]);
             }
 
-            throw new \Exception;
+            throw new Exception;
         } catch (DocumentMaxPagesCountException $e) {
             return redirect()
                 ->route('result')
                 ->with('error', $e->getMessage());
-        } catch (\Exception) {
+        } catch (Exception) {
             return redirect()
                 ->route('result')
                 ->with('error', __('documents.conversions.errors.common'));

@@ -5,7 +5,6 @@ export default {
         document.getElementById('slide').setAttribute('src', slide);
     },
     init() {
-        this.slides = slides;
         this.set(this.slides[0]);
     },
     prev() {

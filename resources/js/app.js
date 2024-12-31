@@ -7,6 +7,21 @@ window.Slider = Slider;
 
 Alpine.start();
 
-if (typeof slides !== 'undefined') {
-    window.addEventListener('load', () => Slider.init());
+async function getSlides() {
+    await axios.get('/sanctum/csrf-cookie');
+
+    const response = await axios.get('/api/slides');
+
+    return response.data;
+}
+
+if (window.location.pathname === '/result') {
+    getSlides()
+        .then((data) => {
+            Slider.slides = data;
+
+            if (Slider.slides) {
+                Slider.init();
+            }
+        });
 }
