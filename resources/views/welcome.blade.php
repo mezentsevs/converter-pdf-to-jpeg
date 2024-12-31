@@ -74,7 +74,7 @@
                     </main>
 
                     <footer class="py-16 text-center text-sm">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        <small>&copy; {{ date('Y') }} {{ __('app.name') }} All rights reserved | Laravel v{{ Illuminate\Foundation\Application::VERSION }} | PHP v{{ PHP_VERSION }}</small>
                     </footer>
                 </div>
             </div>
