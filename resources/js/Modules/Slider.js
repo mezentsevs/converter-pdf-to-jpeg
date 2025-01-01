@@ -2,7 +2,11 @@ export default {
     slides: [],
     index: 0,
     set(slide) {
-        document.getElementById('slide').setAttribute('src', slide);
+        const $el = document.getElementById('slide');
+
+        if ($el) {
+            $el.setAttribute('src', slide);
+        }
     },
     init() {
         this.set(this.slides[0]);
@@ -24,5 +28,19 @@ export default {
         }
 
         this.set(this.slides[this.index]);
+    },
+    hide() {
+        const $el = document.getElementById('slider');
+
+        if ($el) {
+            $el.style.display = 'none';
+        }
+    },
+    show() {
+        const $el = document.getElementById('slider');
+
+        if ($el) {
+            $el.style.display = 'block';
+        }
     },
 };

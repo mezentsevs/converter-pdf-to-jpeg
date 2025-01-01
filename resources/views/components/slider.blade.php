@@ -1,4 +1,4 @@
-<div class="py-2">
+<div id="slider" class="py-2 hidden">
     <div class="max-w-3xl mx-auto">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg text-center">
             <figure class="mt-5 flex justify-evenly items-center">
