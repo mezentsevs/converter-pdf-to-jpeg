@@ -16,8 +16,6 @@ async function getSlides() {
 }
 
 if (window.location.pathname === '/result') {
-    Slider.hide();
-
     getSlides()
         .then((data) => {
             Slider.slides = data;
