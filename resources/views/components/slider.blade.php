@@ -8,7 +8,7 @@
 
                 <img
                     id="slide"
-                    class="mx-6 max-w-60 sm:max-w-96 border-2 border-solid border-indigo-400 dark:border-indigo-600"
+                    class="mx-6 max-w-60 sm:max-w-96 border-2 border-solid border-gray-400 dark:border-gray-600"
                     src=""
                     alt="{{ __('Slide') }}"
                 >

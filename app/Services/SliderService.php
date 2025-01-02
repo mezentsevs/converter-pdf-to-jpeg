@@ -55,7 +55,7 @@ class SliderService
                     h1 { margin: 0; font-size: 1.2em; text-align: center; line-height: 50px; }
                     main { min-height: 1000px; }
                     #slider { margin: 50px auto; width: 640px; text-align: center; }
-                    #slide { width: 620px; border: 2px solid #818cf8; -moz-box-shadow: 1px 1px 1px #CCC; -o-box-shadow: 1px 1px 1px #CCC; -webkit-box-shadow: 1px 1px 1px #CCC; box-shadow: 1px 1px 1px #CCC; }
+                    #slide { width: 620px; border: 2px solid #9ca3af; -moz-box-shadow: 1px 1px 1px #CCC; -o-box-shadow: 1px 1px 1px #CCC; -webkit-box-shadow: 1px 1px 1px #CCC; box-shadow: 1px 1px 1px #CCC; }
                     button { margin: 10px 5px; padding: 3px; }
                     footer { background: #EEE; height: 50px; line-height: 50px; text-align: center; }
                 </style>
