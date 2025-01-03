@@ -86,7 +86,7 @@ npm run build
 - Login on http://localhost/login (next time)
 
 That's it! Now you can upload pdf documents, convert to jpeg and download zip archives with sliders.
-For example, you can use pdf documents in tests/Dummies directory for testing. Thank you!
+For example, you can use pdf documents in tests/Dummies/Documents directory for testing. Thank you!
 
 ## License
 

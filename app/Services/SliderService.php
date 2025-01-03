@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\StringHelper;
 use App\Models\Document;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -93,5 +94,13 @@ class SliderService
                 </body>
             </html>
             EOD;
+    }
+
+    public function makeSliderArchiveFullPath(Document $document, string $archiveExt): string
+    {
+        return $document->slider_archive_absolute_path
+            . DS . StringHelper::trimHashAndExt($document->filename)
+            . SD
+            . $archiveExt;
     }
 }
