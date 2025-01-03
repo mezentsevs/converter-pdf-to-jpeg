@@ -1,11 +1,12 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "mezentsevs/converter-pdf-to-jpeg",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Converter pdf to jpeg",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "converter"
     ],
     "license": "MIT",
     "require": {
