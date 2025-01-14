@@ -19,7 +19,7 @@ class DocumentPolicy
 
     public function create(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     public function update(User $user, Document $document): bool

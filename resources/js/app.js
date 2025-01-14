@@ -7,18 +7,18 @@ window.Slider = Slider;
 
 Alpine.start();
 
-async function getSlides() {
+async function loadSlides() {
     await axios.get('/sanctum/csrf-cookie');
 
     const response = await axios.get('/api/slides');
 
-    return response.data;
+    if (response.status === 200) { return response.data; }
 }
 
 if (window.location.pathname === '/result') {
-    getSlides()
+    loadSlides()
         .then((data) => {
-            Slider.slides = data;
+            if (data.success === true) { Slider.slides = data.slides; }
 
             if (Slider.slides) {
                 Slider.init();
