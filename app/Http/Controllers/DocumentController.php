@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Factories\DocumentCreateDtoFactory;
 use App\Http\Requests\DownloadSliderDocumentRequest;
 use App\Http\Requests\StoreDocumentRequest;
-use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\UploadedFile;
 use App\Interfaces\ArchiverInterface;
 use App\Models\Document;
@@ -31,16 +30,6 @@ class DocumentController extends Controller
         $this->sliders = app(SliderService::class);
     }
 
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
     public function store(StoreDocumentRequest $request): RedirectResponse
     {
         $file = $request->file('document');
@@ -62,26 +51,6 @@ class DocumentController extends Controller
         return redirect()
             ->route('result')
             ->with('uploaded', __('documents.uploads.success'));
-    }
-
-    public function show(Document $document)
-    {
-        //
-    }
-
-    public function edit(Document $document)
-    {
-        //
-    }
-
-    public function update(UpdateDocumentRequest $request, Document $document)
-    {
-        //
-    }
-
-    public function destroy(Document $document)
-    {
-        //
     }
 
     public function downloadSlider(DownloadSliderDocumentRequest $request, Document $document): BinaryFileResponse
