@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
- * App\Models\Document
- *
  * @property int $id
  * @property int $user_id
  * @property string $filename
