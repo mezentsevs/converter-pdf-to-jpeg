@@ -10,7 +10,7 @@ class DocumentCreateDtoFactory implements DtoFromUploadedFileFactoryInterface
 {
     public static function fromUploadedFile(UploadedFile $file): DocumentCreateDto
     {
-        $dto = new DocumentCreateDto();
+        $dto = new DocumentCreateDto;
 
         /**
          * @var \App\Http\UploadedFile $file

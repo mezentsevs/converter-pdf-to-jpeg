@@ -22,7 +22,7 @@ class ZipArchiver implements ArchiverInterface
                 throw new ArchiveMakeException;
             }
 
-            $zip = new ZipArchive();
+            $zip = new ZipArchive;
 
             if ($zip->open($destination, ZIPARCHIVE::CREATE) !== true) {
                 throw new ArchiveMakeException;
