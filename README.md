@@ -1,4 +1,4 @@
-<p style="text-align: center; font-size: 50px">Converter pdf to jpeg</p>
+# Converter pdf to jpeg
 
 ## About 'Converter pdf to jpeg'
 
