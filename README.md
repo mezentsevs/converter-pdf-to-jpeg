@@ -5,13 +5,18 @@
 This is a converter pdf to jpeg written in and for educational purposes.
 
 Based on tech stack:
-- [PHP](https://www.php.net/),
-- [Laravel](https://laravel.com/),
-- [MySQL](https://www.mysql.com/),
-- [ImageMagick](https://imagemagick.org/),
-- [TailwindCss](https://tailwindcss.com/),
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML),
+- [PHP](https://www.php.net),
+- [Laravel](https://laravel.com),
+- [Breeze](https://github.com/laravel/breeze),
+- [Sanctum](https://github.com/laravel/sanctum),
+- [ImageMagick](https://imagemagick.org),
+- [MySQL](https://www.mysql.com),
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript),
-- [Docker](https://www.docker.com/),
+- [Axios](https://axios-http.com),
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS),
+- [TailwindCss](https://tailwindcss.com),
+- [Docker](https://www.docker.com),
 - [Sail](https://github.com/laravel/sail).
 
 ## Getting Started
