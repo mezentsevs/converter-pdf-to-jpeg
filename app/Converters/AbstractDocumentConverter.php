@@ -26,7 +26,8 @@ abstract class AbstractDocumentConverter implements DocumentConverterInterface
         } catch (DocumentConvertSetUpException
             | DocumentConvertReadDocumentException
             | DocumentConvertException
-            | DocumentConvertTearDownException) {
+            | DocumentConvertTearDownException
+        ) {
             return false;
         }
     }
