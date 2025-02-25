@@ -88,7 +88,12 @@ npm run build
 
 - Register new user on http://localhost/register (enter your name, email, password)
 
-- Login on http://localhost/login (next time)
+- Or you can seed database with test user (name: Test User, email: test@example.com, password: password):
+``` bash
+php artisan migrate:fresh --seed
+```
+
+- Login on http://localhost/login
 
 That's it! Now you can upload pdf documents, convert to jpeg and download zip archives with sliders.
 For example, you can use pdf documents in tests/Dummies/Documents directory for testing. Thank you!
