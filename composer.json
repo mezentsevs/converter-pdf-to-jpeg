@@ -15,7 +15,7 @@
         "ext-imagick": "*",
         "ext-zip": "*",
         "laravel/breeze": "^2.2",
-        "laravel/framework": "^11.31",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
     },
