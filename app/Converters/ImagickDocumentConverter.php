@@ -32,16 +32,11 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
 
     protected const int ROTATE_DEGREES = -90;
 
-    protected ImageService $images;
-
-    protected SliderService $sliders;
-
-    public function __construct(protected Imagick $imagick)
-    {
-        $this->images = app(ImageService::class);
-
-        $this->sliders = app(SliderService::class);
-    }
+    public function __construct(
+        protected Imagick $imagick,
+        protected ImageService $images,
+        protected SliderService $sliders,
+    ) {}
 
     /**
      * @throws DocumentConvertSetUpException

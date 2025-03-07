@@ -12,16 +12,10 @@ use Illuminate\Http\RedirectResponse;
 
 class DocumentCreatedListener
 {
-    protected DocumentService $documents;
-
-    protected SliderService $sliders;
-
-    public function __construct()
-    {
-        $this->documents = app(DocumentService::class);
-
-        $this->sliders = app(SliderService::class);
-    }
+    public function __construct(
+        protected DocumentService $documents,
+        protected SliderService $sliders,
+    ) {}
 
     public function handle(DocumentCreatedEvent $event): RedirectResponse
     {

@@ -19,16 +19,11 @@ class DocumentController extends Controller
 {
     use UploadedFileable;
 
-    protected DocumentService $documents;
-
-    protected SliderService $sliders;
-
-    public function __construct(protected ArchiverInterface $archiver)
-    {
-        $this->documents = app(DocumentService::class);
-
-        $this->sliders = app(SliderService::class);
-    }
+    public function __construct(
+        protected ArchiverInterface $archiver,
+        protected DocumentService $documents,
+        protected SliderService $sliders,
+    ) {}
 
     public function store(StoreDocumentRequest $request): RedirectResponse
     {
