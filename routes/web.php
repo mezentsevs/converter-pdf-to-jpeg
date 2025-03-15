@@ -13,12 +13,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    });
 
-    Route::post('/document', [DocumentController::class, 'store'])->name('document.store');
-    Route::get('/document/{document}/download-slider', [DocumentController::class, 'downloadSlider'])->name('document.download-slider');
+    Route::controller(DocumentController::class)->group(function () {
+        Route::post('/document', 'store')->name('document.store');
+        Route::get('/document/{document}/download-slider', 'downloadSlider')->name('document.download-slider');
+    });
 
     Route::get('/result', function () {
         return view('result');
