@@ -75,7 +75,10 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
             foreach ($this->imagick as $i => $image) {
                 $image = $this->setUpImage($image);
 
-                $imageFilename = $this->makeImageFilename($document, (int) ++$i);
+                /**
+                 * @var int $i
+                 */
+                $imageFilename = $this->makeImageFilename($document, ++$i);
 
                 $imageFilepath = $document->images_absolute_path . DS . $imageFilename;
 
