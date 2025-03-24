@@ -68,8 +68,8 @@
                             This is a converter
                             <span class="font-medium text-[#818DF8]">pdf</span>
                             to
-                            <span class="font-medium text-[#818DF8]">jpeg</span>
-                            written in and for educational purposes.
+                            <span class="font-medium text-[#818DF8]">jpeg</span>,
+                            written in and for educational and demonstrational purposes.
                         </p>
                     </main>
 
