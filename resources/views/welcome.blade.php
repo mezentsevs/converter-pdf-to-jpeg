@@ -21,6 +21,10 @@
     </head>
     <body class="font-sans antialiased dark:bg-gray-900 dark:text-white/50">
         <div class="bg-gray-100 text-black/50 dark:bg-gray-900 dark:text-white/50">
+            <div class="fixed mx-2 text-sm">
+                <small>v{{ config('app.version') }}</small>
+            </div>
+
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#818DF8] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header class="min-w-[460px] grid grid-cols-2 items-center gap-2 py-2 lg:grid-cols-3 bg-white dark:bg-gray-800 rounded-lg shadow">
