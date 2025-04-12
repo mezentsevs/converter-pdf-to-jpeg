@@ -2,7 +2,7 @@
 
 namespace App\Archivers;
 
-use App\Exceptions\ArchiveMakeException;
+use App\Exceptions\ArchiveMakeCommonException;
 use App\Helpers\StringHelper;
 use App\Interfaces\ArchiverInterface;
 use RecursiveDirectoryIterator;
@@ -19,13 +19,13 @@ class ZipArchiver implements ArchiverInterface
     {
         try {
             if (!extension_loaded(self::PHP_EXTENSION_NAME) || !file_exists($source)) {
-                throw new ArchiveMakeException;
+                throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
             }
 
             $zip = new ZipArchive;
 
             if ($zip->open($destination, ZIPARCHIVE::CREATE) !== true) {
-                throw new ArchiveMakeException;
+                throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
             }
 
             $source = StringHelper::replaceSlashesWithDS(realpath($source));
@@ -64,11 +64,13 @@ class ZipArchiver implements ArchiverInterface
             }
 
             if (!$zip->close()) {
-                throw new ArchiveMakeException;
+                throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
             }
 
             return true;
-        } catch (ArchiveMakeException) {
+        } catch (ArchiveMakeCommonException $e) {
+            logger()->error($e->getMessage());
+
             return false;
         }
     }

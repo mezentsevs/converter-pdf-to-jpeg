@@ -48,7 +48,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
 
             $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
         } catch (Exception | ImagickException) {
-            throw new DocumentConvertSetUpException;
+            throw new DocumentConvertSetUpException(__('documents.conversions.exceptions.set_up'));
         }
     }
 
@@ -60,7 +60,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         try {
             $this->imagick->readImage($document->filepath);
         } catch (Exception | ImagickException) {
-            throw new DocumentConvertReadDocumentException;
+            throw new DocumentConvertReadDocumentException(__('documents.conversions.exceptions.read'));
         }
     }
 
@@ -94,7 +94,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
 
             $this->sliders->writeIndexHtml($document);
         } catch (Exception | ImagickException) {
-            throw new DocumentConvertException;
+            throw new DocumentConvertException(__('documents.conversions.exceptions.convert'));
         }
     }
 
@@ -106,7 +106,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         try {
             $this->imagick->clear();
         } catch (Exception | ImagickException) {
-            throw new DocumentConvertTearDownException;
+            throw new DocumentConvertTearDownException(__('documents.conversions.exceptions.tear_down'));
         }
     }
 

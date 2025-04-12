@@ -12,9 +12,13 @@ return [
     */
 
     'conversions' => [
-        'errors' => [
-            'common' => 'Something went wrong.',
+        'exceptions' => [
+            'common' => 'Something went wrong with document conversion.',
+            'convert' => 'Something went wrong while converting document.',
             'max_pages_count' => 'Max pages count exceeded (:current > :max).',
+            'read' => 'Something went wrong while reading document.',
+            'set_up' => 'Something went wrong while setting up.',
+            'tear_down' => 'Something went wrong while tearing down.',
         ],
         'success' => 'Converted successfully.',
     ],

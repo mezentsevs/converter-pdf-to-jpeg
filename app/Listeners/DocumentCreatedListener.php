@@ -3,11 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\DocumentCreatedEvent;
+use App\Exceptions\DocumentConvertCommonException;
 use App\Exceptions\DocumentMaxPagesCountException;
 use App\Helpers\PdfHelper;
 use App\Services\DocumentService;
 use App\Services\SliderService;
-use Exception;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentCreatedListener
@@ -25,7 +25,7 @@ class DocumentCreatedListener
             if (($currentPagesCount = PdfHelper::countPages($event->document->filepath)) > config('documents.max_pages_count')) {
                 $this->documents->delete($event->document);
 
-                throw new DocumentMaxPagesCountException(__('documents.conversions.errors.max_pages_count', [
+                throw new DocumentMaxPagesCountException(__('documents.conversions.exceptions.max_pages_count', [
                     'current' => $currentPagesCount,
                     'max' => config('documents.max_pages_count'),
                 ]));
@@ -42,15 +42,11 @@ class DocumentCreatedListener
                     ]);
             }
 
-            throw new Exception;
-        } catch (DocumentMaxPagesCountException $e) {
+            throw new DocumentConvertCommonException(__('documents.conversions.exceptions.common'));
+        } catch (DocumentMaxPagesCountException | DocumentConvertCommonException $e) {
             return redirect()
                 ->route('result')
                 ->with('error', $e->getMessage());
-        } catch (Exception) {
-            return redirect()
-                ->route('result')
-                ->with('error', __('documents.conversions.errors.common'));
         }
     }
 }
