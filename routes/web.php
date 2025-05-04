@@ -6,22 +6,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::controller(ProfileController::class)->group(function () {
-        Route::get('/profile', 'edit')->name('profile.edit');
-        Route::patch('/profile', 'update')->name('profile.update');
-        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    Route::prefix('profile')->controller(ProfileController::class)->group(function () {
+        Route::get('/', 'edit')->name('profile.edit');
+        Route::patch('/', 'update')->name('profile.update');
+        Route::delete('/', 'destroy')->name('profile.destroy');
     });
 
-    Route::controller(DocumentController::class)->group(function () {
-        Route::post('/document', 'store')->name('document.store');
-        Route::get('/document/{document}/download-slider', 'downloadSlider')->name('document.download-slider');
+    Route::prefix('document')->controller(DocumentController::class)->group(function () {
+        Route::post('/', 'store')->name('document.store');
+        Route::get('/{document}/download-slider', 'downloadSlider')->name('document.download-slider');
     });
 
     Route::get('/result', function () {
