@@ -2,10 +2,10 @@
 
 namespace App\Dtos;
 
-use App\Interfaces\DtoInterface;
+use App\Interfaces\Dto;
 use App\Models\Document;
 
-class ImageCreateDto implements DtoInterface
+class ImageCreateDto implements Dto
 {
     public Document $document;
 

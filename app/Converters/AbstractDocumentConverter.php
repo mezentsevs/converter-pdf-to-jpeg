@@ -6,10 +6,10 @@ use App\Exceptions\DocumentConvertException;
 use App\Exceptions\DocumentConvertReadDocumentException;
 use App\Exceptions\DocumentConvertSetUpException;
 use App\Exceptions\DocumentConvertTearDownException;
-use App\Interfaces\DocumentConverterInterface;
+use App\Interfaces\DocumentConverter;
 use App\Models\Document;
 
-abstract class AbstractDocumentConverter implements DocumentConverterInterface
+abstract class AbstractDocumentConverter implements DocumentConverter
 {
     final public function convert(Document $document): bool
     {

@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use App\Models\Document;
 
-interface DocumentConverterInterface
+interface DocumentConverter
 {
     public string $imageExt {
         get;

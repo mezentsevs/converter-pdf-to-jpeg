@@ -2,10 +2,10 @@
 
 namespace App\Dtos;
 
-use App\Interfaces\DtoInterface;
+use App\Interfaces\Dto;
 use App\Models\User;
 
-class DocumentCreateDto implements DtoInterface
+class DocumentCreateDto implements Dto
 {
     public User $user;
 

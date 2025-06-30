@@ -4,12 +4,12 @@ namespace App\Archivers;
 
 use App\Exceptions\ArchiveMakeCommonException;
 use App\Helpers\StringHelper;
-use App\Interfaces\ArchiverInterface;
+use App\Interfaces\Archiver;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use ZipArchive;
 
-class ZipArchiver implements ArchiverInterface
+class ZipArchiver implements Archiver
 {
     public string $archiveExt = 'zip';
 

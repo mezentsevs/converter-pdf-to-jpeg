@@ -3,9 +3,9 @@
 namespace App\Factories;
 
 use App\Dtos\ImageCreateDto;
-use App\Interfaces\DtoFromArrayFactoryInterface;
+use App\Interfaces\DtoFromArrayFactory;
 
-class ImageCreateDtoFactory implements DtoFromArrayFactoryInterface
+class ImageCreateDtoFactory implements DtoFromArrayFactory
 {
     public static function fromArray(array $data): ImageCreateDto
     {

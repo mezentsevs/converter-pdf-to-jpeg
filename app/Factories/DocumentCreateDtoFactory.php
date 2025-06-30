@@ -3,10 +3,10 @@
 namespace App\Factories;
 
 use App\Dtos\DocumentCreateDto;
-use App\Interfaces\DtoFromUploadedFileFactoryInterface;
+use App\Interfaces\DtoFromUploadedFileFactory;
 use Illuminate\Http\UploadedFile;
 
-class DocumentCreateDtoFactory implements DtoFromUploadedFileFactoryInterface
+class DocumentCreateDtoFactory implements DtoFromUploadedFileFactory
 {
     public static function fromUploadedFile(UploadedFile $file): DocumentCreateDto
     {

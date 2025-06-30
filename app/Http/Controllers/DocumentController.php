@@ -6,7 +6,7 @@ use App\Factories\DocumentCreateDtoFactory;
 use App\Http\Requests\DownloadSliderDocumentRequest;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\UploadedFile;
-use App\Interfaces\ArchiverInterface;
+use App\Interfaces\Archiver;
 use App\Models\Document;
 use App\Services\DocumentService;
 use App\Services\SliderService;
@@ -20,7 +20,7 @@ class DocumentController extends Controller
     use UploadedFileable;
 
     public function __construct(
-        protected ArchiverInterface $archiver,
+        protected Archiver $archiver,
         protected DocumentService $documents,
         protected SliderService $sliders,
     ) {}

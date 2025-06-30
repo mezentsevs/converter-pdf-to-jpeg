@@ -6,13 +6,13 @@ use App\Dtos\DocumentCreateDto;
 use App\Events\DocumentConvertedEvent;
 use App\Events\DocumentCreatedEvent;
 use App\Events\DocumentDeletedEvent;
-use App\Interfaces\DocumentConverterInterface;
+use App\Interfaces\DocumentConverter;
 use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentService
 {
-    public function __construct(protected DocumentConverterInterface $documentConverter) {}
+    public function __construct(protected DocumentConverter $documentConverter) {}
 
     public function create(DocumentCreateDto $dto): Document
     {

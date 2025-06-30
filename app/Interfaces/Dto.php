@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface DtoInterface
+interface Dto
 {
     public function toArray(): array;
 }
