@@ -6,7 +6,7 @@ use App\Models\Document;
 
 interface DocumentConverter
 {
-    public string $imageExt {
+    public string $imageFileExtension {
         get;
     }
 

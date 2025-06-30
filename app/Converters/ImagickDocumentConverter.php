@@ -18,7 +18,7 @@ use ImagickException;
 
 class ImagickDocumentConverter extends AbstractDocumentConverter
 {
-    public string $imageExt = 'jpeg';
+    public string $imageFileExtension = 'jpeg';
 
     protected const int X_RESOLUTION = 300;
 
@@ -136,6 +136,6 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
             . '_'
             . StringHelper::prependLessThanTenZero($number)
             . SD
-            . $this->imageExt;
+            . $this->imageFileExtension;
     }
 }
