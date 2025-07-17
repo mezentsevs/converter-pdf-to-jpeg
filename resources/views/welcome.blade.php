@@ -30,8 +30,8 @@
                     <header class="min-w-[460px] grid grid-cols-2 items-center gap-2 py-2 lg:grid-cols-3 bg-white dark:bg-gray-800 rounded-lg shadow">
                         <div class="flex lg:justify-center lg:col-start-2">
                             <h1 class="flex flex-row items-center">
-                                <a href="/" class="inline-block w-[70px] h-[70px]">
-                                    <x-application-logo class="p-[10px]"/>
+                                <a href="/" class="inline-block w-12 h-12 m-2">
+                                    <x-application-logo />
                                 </a>
                                 <span class="inline-block text-4xl font-black tracking-widest text-gray-700 dark:text-gray-200">{{ __('app.name') }}</span>
                             </h1>
