@@ -69,17 +69,17 @@
                         @endif
                     </header>
 
-                    <main class="min-h-96 mt-6 text-center text-black dark:text-white/70 flex flex-col justify-center">
+                    <main class="min-h-96 mt-6 text-black dark:text-white/70 text-center flex flex-col justify-center">
                         <p>
                             This is a converter
-                            <span class="font-medium text-indigo-400">pdf</span>
+                            <span class="text-indigo-400 font-medium">pdf</span>
                             to
-                            <span class="font-medium text-indigo-400">jpeg</span>,
+                            <span class="text-indigo-400 font-medium">jpeg</span>,
                             written in and for educational and demonstrational purposes.
                         </p>
                     </main>
 
-                    <footer class="py-16 text-center text-sm">
+                    <footer class="py-16 text-sm text-center">
                         <small>&copy; {{ date('Y') }} {{ __('app.name') }} All rights reserved | Laravel v{{ Illuminate\Foundation\Application::VERSION }} | PHP v{{ PHP_VERSION }}</small>
                     </footer>
                 </div>
