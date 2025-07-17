@@ -1,6 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
-import Slider from './Modules/Slider.js';
+import Slider from './modules/Slider.js';
 
 window.Alpine = Alpine;
 window.Slider = Slider;
