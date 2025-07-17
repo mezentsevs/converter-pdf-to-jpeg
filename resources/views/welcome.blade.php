@@ -33,7 +33,9 @@
                                 <a href="/" class="inline-block w-12 h-12 m-2">
                                     <x-application-logo />
                                 </a>
-                                <span class="inline-block text-4xl font-black tracking-widest text-gray-700 dark:text-gray-200">{{ __('app.name') }}</span>
+                                <span class="inline-block text-gray-700 dark:text-gray-200 text-4xl font-black tracking-widest">
+                                    {{ __('app.name') }}
+                                </span>
                             </h1>
                         </div>
 
