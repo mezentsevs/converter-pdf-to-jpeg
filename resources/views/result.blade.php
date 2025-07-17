@@ -18,6 +18,6 @@
     @endif
 
     @if(session('slides'))
-        <x-slider></x-slider>
+        <x-slider />
     @endif
 </x-app-layout>
