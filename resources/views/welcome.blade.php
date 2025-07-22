@@ -23,9 +23,9 @@
                 <small>v{{ config('app.version') }}</small>
             </div>
 
-            <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-indigo-500 selection:text-white px-4">
+            <div class="relative min-h-screen px-0 sm:px-4 pt-8 sm:pt-0 selection:bg-indigo-500 selection:text-white flex flex-col items-center justify-start sm:justify-center">
                 <div class="relative w-full max-w-2xl lg:max-w-7xl min-w-[20rem]">
-                    <header class="w-full min-w-min py-4 grid grid-cols-1 sm:grid-cols-3 items-center gap-2 sm:gap-4 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
+                    <header class="w-full min-w-min py-4 bg-white dark:bg-gray-800 grid grid-cols-1 sm:grid-cols-3 items-center gap-2 sm:gap-4 rounded-none sm:rounded-2xl shadow-md">
                         <h1 class="flex flex-row items-center justify-center sm:col-start-2 sm:justify-center">
                             <a href="/" class="inline-block w-8 h-8 sm:w-12 sm:h-12 shrink-0 m-1 sm:m-2 text-indigo-500 dark:text-indigo-600">
                                 <x-application-logo />
@@ -58,7 +58,7 @@
                         @endif
                     </header>
 
-                    <main class="min-w-min min-h-96 mt-6 sm:mt-10 px-4 sm:px-8 py-6 sm:py-10 bg-white dark:bg-gray-800 text-black dark:text-white/70 text-center flex flex-col justify-center rounded-2xl shadow-md">
+                    <main class="min-w-min min-h-96 mt-1 sm:mt-10 px-0 sm:px-8 py-6 sm:py-10 bg-white dark:bg-gray-800 text-black dark:text-white/70 text-center flex flex-col justify-center rounded-none sm:rounded-2xl shadow-md">
                         <p class="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
                             This is a converter
                             <span class="text-indigo-500 dark:text-indigo-600 font-medium">pdf</span>
