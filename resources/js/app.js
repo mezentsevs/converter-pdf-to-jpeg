@@ -1,5 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+
 import DocumentUploadForm from './modules/DocumentUploadForm.js';
 import Slider from './modules/Slider.js';
 import SlidesLoader from './modules/SlidesLoader.js';

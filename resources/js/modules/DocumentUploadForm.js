@@ -1,7 +1,9 @@
 export default {
     init() {
         const documentUploadForm = document.getElementById('documentUploadForm');
-        if (!documentUploadForm) { return; }
+        if (!documentUploadForm) {
+            return;
+        }
 
         const documentUploadButton = document.getElementById('documentUploadButton');
 
@@ -14,4 +16,4 @@ export default {
             $spinner.classList.remove('invisible');
         });
     },
-}
+};
