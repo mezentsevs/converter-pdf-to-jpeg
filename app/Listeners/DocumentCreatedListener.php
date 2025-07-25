@@ -15,7 +15,8 @@ class DocumentCreatedListener
     public function __construct(
         protected DocumentService $documents,
         protected SliderService $sliders,
-    ) {}
+    ) {
+    }
 
     public function handle(DocumentCreatedEvent $event): RedirectResponse
     {

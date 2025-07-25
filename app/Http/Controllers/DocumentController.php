@@ -23,7 +23,8 @@ class DocumentController extends Controller
         protected Archiver $archiver,
         protected DocumentService $documents,
         protected SliderService $sliders,
-    ) {}
+    ) {
+    }
 
     public function store(StoreDocumentRequest $request): RedirectResponse
     {

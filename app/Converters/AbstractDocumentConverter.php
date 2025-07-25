@@ -35,7 +35,9 @@ abstract class AbstractDocumentConverter implements DocumentConverter
     /**
      * @throws DocumentConvertSetUpException
      */
-    protected function setUp(): void {}
+    protected function setUp(): void
+    {
+    }
 
     /**
      * @throws DocumentConvertReadDocumentException
@@ -50,5 +52,7 @@ abstract class AbstractDocumentConverter implements DocumentConverter
     /**
      * @throws DocumentConvertTearDownException
      */
-    protected function tearDown(): void {}
+    protected function tearDown(): void
+    {
+    }
 }

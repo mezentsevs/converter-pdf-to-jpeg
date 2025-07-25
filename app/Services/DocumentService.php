@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 class DocumentService
 {
-    public function __construct(protected DocumentConverter $documentConverter) {}
+    public function __construct(protected DocumentConverter $documentConverter)
+    {
+    }
 
     public function create(DocumentCreateDto $dto): Document
     {

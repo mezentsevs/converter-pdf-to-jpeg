@@ -23,7 +23,7 @@ class StoreDocumentRequest extends FormRequest
                 'required',
                 'file',
                 'mimetypes:application/pdf',
-                'max:' . ((int) config('uploads.post.max_file_size'))/1024,
+                'max:' . ((int) config('uploads.post.max_file_size')) / 1024,
             ],
         ];
     }

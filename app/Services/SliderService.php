@@ -14,7 +14,8 @@ class SliderService
         $slides = [];
 
         foreach ($document->images as $image) {
-            $slides[] = asset('storage'
+            $slides[] = asset(
+                'storage'
                 . DS . $document->images_relative_path
                 . DS . $image->filename
             );
@@ -33,8 +34,9 @@ class SliderService
 
     protected function getContentForIndexHtml(Document $document): string
     {
-        $slides = implode("',\n" . str_repeat(' ', 16) . '\''
-            , Arr::map($this->getSlides($document), function (string $slide): string {
+        $slides = implode(
+            "',\n" . str_repeat(' ', 16) . '\'',
+            Arr::map($this->getSlides($document), function (string $slide): string {
                 return config('images.directory') . DS . basename($slide);
             }),
         );

@@ -22,7 +22,7 @@ class ZipArchiver implements Archiver
                 throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
             }
 
-            $zip = new ZipArchive;
+            $zip = new ZipArchive();
 
             if ($zip->open($destination, ZIPARCHIVE::CREATE) !== true) {
                 throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
@@ -32,7 +32,8 @@ class ZipArchiver implements Archiver
 
             if (is_dir($source)) {
                 $items = new RecursiveIteratorIterator(
-                    new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST,
+                    new RecursiveDirectoryIterator($source),
+                    RecursiveIteratorIterator::SELF_FIRST,
                 );
 
                 foreach ($items as $item) {

@@ -61,7 +61,8 @@ class Document extends Model
     protected function filepath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path('app'
+            get: fn () => storage_path(
+                'app'
                 . DS . 'private'
                 . DS . config('documents.directory')
                 . DS . $this->filename
@@ -97,7 +98,8 @@ class Document extends Model
     protected function imagesAbsolutePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path('app'
+            get: fn () => storage_path(
+                'app'
                 . DS . 'public'
                 . DS . $this->images_relative_path
             ),

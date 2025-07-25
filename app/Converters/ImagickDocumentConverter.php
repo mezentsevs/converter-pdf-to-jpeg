@@ -36,7 +36,8 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
         protected Imagick $imagick,
         protected ImageService $images,
         protected SliderService $sliders,
-    ) {}
+    ) {
+    }
 
     /**
      * @throws DocumentConvertSetUpException
@@ -44,7 +45,7 @@ class ImagickDocumentConverter extends AbstractDocumentConverter
     protected function setUp(): void
     {
         try {
-            $this->imagick = new Imagick;
+            $this->imagick = new Imagick();
 
             $this->imagick->setResolution(self::X_RESOLUTION, self::Y_RESOLUTION);
         } catch (Exception | ImagickException) {
