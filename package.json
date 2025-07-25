@@ -3,16 +3,29 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "lint": "eslint resources/js/",
+        "lint:fix": "eslint resources/js/ --fix",
+        "format": "prettier --write resources/js/",
+        "code:check": "npm run lint && npm run format",
+        "code:fix": "npm run lint:fix && npm run format"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.28.0",
         "@tailwindcss/forms": "^0.5.2",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
+        "eslint": "^9.31.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-prettier": "^5.5.3",
+        "eslint-plugin-promise": "^7.2.1",
+        "globals": "^16.3.0",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
+        "prettier": "^3.6.2",
         "tailwindcss": "^3.1.0",
         "vite": "^5.0"
     }
