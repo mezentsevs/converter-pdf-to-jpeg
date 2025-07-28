@@ -7,7 +7,7 @@
         "lint": "eslint resources/js/",
         "lint:fix": "eslint resources/js/ --fix",
         "format": "prettier --write resources/js/",
-        "code:check": "npm run lint && npm run format",
+        "code:lint": "npm run lint && npm run format",
         "code:fix": "npm run lint:fix && npm run format"
     },
     "devDependencies": {
