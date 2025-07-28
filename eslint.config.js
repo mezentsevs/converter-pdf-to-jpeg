@@ -6,57 +6,57 @@ import globals from 'globals';
 export default [
     {
         ignores: [
-            "dist/**",
-            "node_modules/**",
-            // "*.config.js"
-        ]
+            'dist/**',
+            'node_modules/**',
+            'public/**',
+        ],
     },
     {
         languageOptions: {
             ecmaVersion: 2025,
-            sourceType: "module",
+            sourceType: 'module',
             globals: {
                 ...globals.browser,
-                ...globals.node
-            }
+                ...globals.node,
+            },
         },
 
         plugins: {
             import: eslintPluginImport,
             promise: eslintPluginPromise,
-            prettier: eslintPluginPrettier
+            prettier: eslintPluginPrettier,
         },
 
         rules: {
-            "no-console": "warn",
-            "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+            'no-console': 'warn',
+            'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
 
-            "import/order": [
-                "error",
+            'import/order': [
+                'error',
                 {
-                    groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-                    "newlines-between": "always"
-                }
+                    groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+                    'newlines-between': 'always',
+                },
             ],
 
-            "indent": ["error", 4, {
-                "SwitchCase": 1,
-                "ignoredNodes": ["TemplateLiteral"]
+            'indent': ['error', 4, {
+                'SwitchCase': 1,
+                'ignoredNodes': ['TemplateLiteral'],
             }],
 
-            "prettier/prettier": [
-                "error",
+            'prettier/prettier': [
+                'error',
                 {
                     printWidth: 100,
                     tabWidth: 4,
                     useTabs: false,
                     semi: true,
                     singleQuote: true,
-                    trailingComma: "all",
+                    trailingComma: 'all',
                     bracketSpacing: true,
-                    arrowParens: "avoid"
-                }
-            ]
-        }
-    }
+                    arrowParens: 'avoid',
+                },
+            ],
+        },
+    },
 ];
