@@ -11,6 +11,7 @@ export default [
             'public/**',
         ],
     },
+
     {
         languageOptions: {
             ecmaVersion: 2025,
