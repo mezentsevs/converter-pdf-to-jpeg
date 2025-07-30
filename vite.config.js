@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
+import babel from '@rollup/plugin-babel';
 import laravel from 'laravel-vite-plugin';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
@@ -8,4 +9,16 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        rollupOptions: {
+            plugins: [
+                babel({
+                    babelHelpers: 'bundled',
+                    exclude: 'node_modules/**',
+                    extensions: ['.js'],
+                    include: ['resources/js/**'],
+                }),
+            ],
+        },
+    },
 });

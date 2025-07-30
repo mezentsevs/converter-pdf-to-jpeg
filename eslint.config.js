@@ -1,3 +1,4 @@
+import babelEslintParser from '@babel/eslint-parser';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginPromise from 'eslint-plugin-promise';
@@ -11,27 +12,30 @@ export default [
             'public/**',
         ],
     },
-
     {
         languageOptions: {
-            ecmaVersion: 2025,
+            ecmaVersion: 'latest',
             sourceType: 'module',
             globals: {
                 ...globals.browser,
                 ...globals.node,
             },
+            parser: babelEslintParser,
+            parserOptions: {
+                requireConfigFile: true,
+                babelOptions: {
+                    configFile: './.babelrc',
+                },
+            },
         },
-
         plugins: {
             import: eslintPluginImport,
             promise: eslintPluginPromise,
             prettier: eslintPluginPrettier,
         },
-
         rules: {
             'no-console': 'warn',
             'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
-
             'import/order': [
                 'error',
                 {
@@ -39,12 +43,10 @@ export default [
                     'newlines-between': 'always',
                 },
             ],
-
             'indent': ['error', 4, {
                 'SwitchCase': 1,
                 'ignoredNodes': ['TemplateLiteral'],
             }],
-
             'prettier/prettier': [
                 'error',
                 {
