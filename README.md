@@ -98,6 +98,21 @@ php artisan migrate:fresh --seed
 That's it! Now you can upload pdf documents, convert to jpeg and download zip archives with sliders.
 For example, you can use pdf documents in tests/Dummies/Documents directory for testing. Thank you!
 
+## Screenshots
+
+<img width="1920" height="1200" alt="2025-07-31_19-41-35" src="https://github.com/user-attachments/assets/3cca1e8d-2ce5-4ea0-84f9-3c58b2b23a4a" />
+<img width="1920" height="1200" alt="2025-07-31_19-42-17" src="https://github.com/user-attachments/assets/9def30a0-ee13-44c2-a827-0d4b1828913b" />
+<img width="1920" height="1200" alt="2025-07-31_19-45-50" src="https://github.com/user-attachments/assets/338a849b-cc29-45d3-9c5f-ea2098fb5456" />
+<img width="1920" height="1200" alt="2025-07-31_19-46-17" src="https://github.com/user-attachments/assets/e3e493f3-3285-435b-b595-2105f01383d0" />
+<img width="1920" height="1200" alt="2025-07-31_19-47-10" src="https://github.com/user-attachments/assets/1b163074-86ac-4e32-9d23-517e6f0a2a9b" />
+<img width="1920" height="1200" alt="2025-07-31_19-47-15" src="https://github.com/user-attachments/assets/244c50b8-961b-4602-8dca-6a1b78835786" />
+<img width="1920" height="1200" alt="2025-07-31_19-48-20" src="https://github.com/user-attachments/assets/efb2409b-3849-47d0-aaab-37e2c9b1b9f8" />
+<img width="1920" height="1200" alt="2025-07-31_19-49-10" src="https://github.com/user-attachments/assets/7c78cbaa-6e9a-4eb1-ba90-f1ce27bb4d0f" />
+<img width="1920" height="1200" alt="2025-07-31_19-50-01" src="https://github.com/user-attachments/assets/86aba57c-5ca8-490f-9ebc-f367c5d3026f" />
+<img width="1920" height="1200" alt="2025-07-31_19-50-34" src="https://github.com/user-attachments/assets/72a3e8a4-0aa8-4190-8467-f6bdd3aeaeee" />
+<img width="1920" height="1200" alt="2025-07-31_19-51-56" src="https://github.com/user-attachments/assets/b49d7565-74d4-4060-840c-f402eb51447e" />
+<img width="1920" height="1200" alt="2025-07-31_19-52-42" src="https://github.com/user-attachments/assets/4c5c541c-2dae-40f4-9113-399223c2a3b3" />
+
 ## License
 
 The 'Converter pdf to jpeg' is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
