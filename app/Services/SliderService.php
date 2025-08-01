@@ -98,11 +98,11 @@ class SliderService
             EOD;
     }
 
-    public function makeSliderArchiveFullPath(Document $document, string $archiveExt): string
+    public function makeSliderArchiveFullPath(Document $document, string $archiveFileExtension): string
     {
         return $document->slider_archive_absolute_path
             . DS . StringHelper::trimHashAndExt($document->filename)
             . SD
-            . $archiveExt;
+            . $archiveFileExtension;
     }
 }

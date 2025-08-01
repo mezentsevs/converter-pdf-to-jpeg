@@ -11,7 +11,7 @@ use ZipArchive;
 
 class ZipArchiver implements Archiver
 {
-    public string $archiveExt = 'zip';
+    public string $archiveFileExtension = 'zip';
 
     protected const string PHP_EXTENSION_NAME = 'zip';
 

@@ -53,7 +53,7 @@ class DocumentController extends Controller
     {
         Storage::disk('public')->makeDirectory($document->slider_archive_relative_path);
 
-        $path = $this->sliders->makeSliderArchiveFullPath($document, $this->archiver->archiveExt);
+        $path = $this->sliders->makeSliderArchiveFullPath($document, $this->archiver->archiveFileExtension);
 
         if (!$this->archiver->makeArchive($document->slider_absolute_path, $path)) {
             abort(520);
