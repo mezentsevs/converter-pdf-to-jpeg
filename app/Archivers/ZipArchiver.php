@@ -13,12 +13,12 @@ class ZipArchiver implements Archiver
 {
     public string $archiveFileExtension = 'zip';
 
-    protected const string PHP_EXTENSION_NAME = 'zip';
+    protected const string ARCHIVER_PHP_EXTENSION = 'zip';
 
     public function makeArchive(string $source, string $destination): bool
     {
         try {
-            if (!extension_loaded(self::PHP_EXTENSION_NAME) || !file_exists($source)) {
+            if (!extension_loaded(self::ARCHIVER_PHP_EXTENSION) || !file_exists($source)) {
                 throw new ArchiveMakeCommonException(__('archives.makings.exceptions.common'));
             }
 
