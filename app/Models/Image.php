@@ -26,6 +26,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Image whereSize($value)
  * @method static Builder<static>|Image whereType($value)
  * @method static Builder<static>|Image whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Image extends Model
 {

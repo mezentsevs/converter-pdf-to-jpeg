@@ -24,9 +24,9 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $images_count
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
+ * @property-read mixed $slider_absolute_path
  * @property-read mixed $slider_archive_absolute_path
  * @property-read mixed $slider_archive_relative_path
- * @property-read mixed $slider_absolute_path
  * @property-read mixed $slider_relative_path
  * @property-read User $user
  * @method static Builder<static>|Document newModelQuery()
@@ -39,6 +39,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Document whereType($value)
  * @method static Builder<static>|Document whereUpdatedAt($value)
  * @method static Builder<static>|Document whereUserId($value)
+ * @mixin \Eloquent
  */
 class Document extends Model
 {
