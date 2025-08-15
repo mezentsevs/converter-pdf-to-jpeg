@@ -17,7 +17,7 @@ class SliderService
             $slides[] = asset(
                 'storage'
                 . DS . $document->images_relative_path
-                . DS . $image->filename
+                . DS . $image->filename,
             );
         }
 

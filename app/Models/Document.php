@@ -66,7 +66,7 @@ class Document extends Model
                 'app'
                 . DS . 'private'
                 . DS . config('documents.directory')
-                . DS . $this->filename
+                . DS . $this->filename,
             ),
         );
     }
@@ -102,7 +102,7 @@ class Document extends Model
             get: fn () => storage_path(
                 'app'
                 . DS . 'public'
-                . DS . $this->images_relative_path
+                . DS . $this->images_relative_path,
             ),
         );
     }
