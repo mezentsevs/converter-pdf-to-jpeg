@@ -10,14 +10,14 @@ use App\Interfaces\Archiver;
 use App\Models\Document;
 use App\Services\DocumentService;
 use App\Services\SliderService;
-use App\Traits\UploadedFileable;
+use App\Traits\WithUploadedFile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DocumentController extends Controller
 {
-    use UploadedFileable;
+    use WithUploadedFile;
 
     public function __construct(
         protected Archiver $archiver,

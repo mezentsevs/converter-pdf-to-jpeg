@@ -5,7 +5,7 @@ namespace App\Traits;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
-trait UploadedFileable
+trait WithUploadedFile
 {
     protected function makeUploadedFileName(UploadedFile $file): string
     {
