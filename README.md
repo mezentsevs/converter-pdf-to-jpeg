@@ -68,7 +68,6 @@ docker exec -it converter-pdf-to-jpeg-laravel.test-1 bash
 
 - Install php dependencies:
 ``` bash
-git config --global --add safe.directory /var/www/html
 composer install
 ```
 
