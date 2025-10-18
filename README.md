@@ -4,6 +4,8 @@
 
 This is a converter pdf to jpeg, written in and for educational and demonstrational purposes.
 
+A backend service for converting pdf documents into jpeg images. It handles file upload, validation, and processing. The results are instantly displayed in an in-browser slider for preview, and are also provided as a downloadable archive containing all images and a portable slider for offline use.
+
 Based on tech stack:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML),
 - [PHP](https://www.php.net),
