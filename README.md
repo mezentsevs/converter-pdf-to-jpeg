@@ -109,7 +109,7 @@ For example, you can use pdf documents in tests/Dummies/Documents directory for 
 <img width="1920" height="1200" alt="2025-07-31_19-45-50" src="https://github.com/user-attachments/assets/338a849b-cc29-45d3-9c5f-ea2098fb5456" />
 <img width="1920" height="1200" alt="2025-07-31_19-46-17" src="https://github.com/user-attachments/assets/e3e493f3-3285-435b-b595-2105f01383d0" />
 <img width="1920" height="1200" alt="2025-08-02_09-45-51" src="https://github.com/user-attachments/assets/2e392f03-589c-42e9-a65a-ad9cc0786634" />
-<img width="1916" height="1200" alt="2025-08-02_09-52-15" src="https://github.com/user-attachments/assets/34b0aa3a-6220-4d4c-b406-63cc2e3e7157" />
+<img width="1920" height="1200" alt="2025-08-02_09-52-15" src="https://github.com/user-attachments/assets/34b0aa3a-6220-4d4c-b406-63cc2e3e7157" />
 <img width="1920" height="1200" alt="2025-07-31_19-47-10" src="https://github.com/user-attachments/assets/1b163074-86ac-4e32-9d23-517e6f0a2a9b" />
 <img width="1920" height="1200" alt="2025-07-31_19-47-15" src="https://github.com/user-attachments/assets/244c50b8-961b-4602-8dca-6a1b78835786" />
 <img width="1920" height="1200" alt="2025-07-31_19-48-20" src="https://github.com/user-attachments/assets/efb2409b-3849-47d0-aaab-37e2c9b1b9f8" />
