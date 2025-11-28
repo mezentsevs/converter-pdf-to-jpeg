@@ -122,3 +122,6 @@ For example, you can use pdf documents in tests/Dummies/Documents directory for 
 ## License
 
 The 'Converter pdf to jpeg' is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Third-Party Licenses
+This project uses third-party software components. Their respective licenses can be found in the LICENSE-3rd-party.md file.
