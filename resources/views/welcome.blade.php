@@ -6,6 +6,8 @@
 
         <title>{{ __('app.name') }}</title>
 
+        <x-theme-init />
+
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
@@ -21,6 +23,10 @@
         <div class="bg-gray-100 text-black/50 dark:bg-gray-900 dark:text-white/50">
             <div class="fixed mx-2 text-sm">
                 <small>v{{ config('app.version') }}</small>
+            </div>
+
+            <div class="absolute top-4 right-4 z-10">
+                <x-theme-toggle />
             </div>
 
             <div class="relative min-h-screen px-0 sm:px-4 pt-8 sm:pt-0 selection:bg-indigo-500 selection:text-white flex flex-col items-center justify-start sm:justify-center">

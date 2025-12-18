@@ -7,6 +7,8 @@
 
         <title>{{ __('app.name') }}</title>
 
+        <x-theme-init />
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -16,6 +18,10 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+            <div class="absolute top-4 right-4">
+                <x-theme-toggle />
+            </div>
+
             <a href="/" class="inline-block w-12 h-12 text-indigo-500 dark:text-indigo-600">
                 <x-application-logo />
             </a>
