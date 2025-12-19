@@ -12,23 +12,23 @@
         <div class="mb-6">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <div class="flex w-full sm:w-auto gap-4">
-                    <x-secondary-button 
+                    <x-control-button 
                         id="prev" 
-                        class="h-12 flex-1 sm:flex-none sm:w-32 md:w-40 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 justify-center"
                         onclick="Slider.prev()"
+                        class="h-12 flex-1 sm:flex-none sm:w-32 md:w-40 justify-center"
                     >
                         <span class="text-lg">&lsaquo;</span>
                         <span class="hidden sm:inline ml-2">Previous</span>
-                    </x-secondary-button>
+                    </x-control-button>
 
-                    <x-secondary-button 
+                    <x-control-button 
                         id="next" 
-                        class="h-12 flex-1 sm:flex-none sm:w-32 md:w-40 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 justify-center"
                         onclick="Slider.next()"
+                        class="h-12 flex-1 sm:flex-none sm:w-32 md:w-40 justify-center"
                     >
                         <span class="hidden sm:inline mr-2">Next</span>
                         <span class="text-lg">&rsaquo;</span>
-                    </x-secondary-button>
+                    </x-control-button>
                 </div>
             </div>
         </div>
