@@ -26,7 +26,7 @@
                 </header>
             @endisset
 
-            <main>
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
         </div>
