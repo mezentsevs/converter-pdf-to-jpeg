@@ -5,19 +5,21 @@
         </h2>
     </x-slot>
 
-    @if(session('uploaded'))
-        <x-message-success>{{ session('uploaded') }}</x-message-success>
-    @endif
+    <div class="pb-8">
+        @if(session('uploaded'))
+            <x-message-success>{{ session('uploaded') }}</x-message-success>
+        @endif
 
-    @if(session('error'))
-        <x-message-error>{{ session('error') }}</x-message-error>
-    @endif
+        @if(session('error'))
+            <x-message-error>{{ session('error') }}</x-message-error>
+        @endif
 
-    @if(session('converted'))
-        <x-message-success>{{ session('converted') }}</x-message-success>
-    @endif
+        @if(session('converted'))
+            <x-message-success>{{ session('converted') }}</x-message-success>
+        @endif
 
-    @if(session('slides'))
-        <x-slider />
-    @endif
+        @if(session('slides'))
+            <x-slider />
+        @endif
+    </div>
 </x-app-layout>
