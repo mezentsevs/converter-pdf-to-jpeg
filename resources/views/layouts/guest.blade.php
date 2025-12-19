@@ -23,7 +23,7 @@
             </div>
 
             <a href="/" class="inline-block w-12 h-12 text-indigo-500 dark:text-indigo-600">
-                <x-application-logo />
+                <x-icons.application-logo-icon />
             </a>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">

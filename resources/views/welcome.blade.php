@@ -20,7 +20,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                     <a href="/" class="inline-block w-8 h-8 sm:w-10 sm:h-10 text-indigo-500 dark:text-indigo-600 transition-transform hover:scale-105">
-                        <x-application-logo />
+                        <x-icons.application-logo-icon />
                     </a>
                     <span class="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">
                         {{ __('app.name') }}
@@ -183,7 +183,7 @@
                     <div class="mb-4 md:mb-0">
                         <div class="flex items-center space-x-3 mb-2">
                             <a href="/" class="inline-block w-6 h-6 text-indigo-500 dark:text-indigo-600">
-                                <x-application-logo />
+                                <x-icons.application-logo-icon />
                             </a>
                             <span class="text-sm font-medium text-gray-800 dark:text-white">
                                 {{ __('app.name') }} v{{ config('app.version') }}
