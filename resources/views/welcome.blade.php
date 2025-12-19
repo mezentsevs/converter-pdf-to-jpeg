@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ __('app.name') }}</title>
 
-    <x-theme-init />
+    <x-theme.theme-init />
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -48,7 +48,7 @@
                         @endauth
                     @endif
                     
-                    <x-theme-toggle class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 ml-2" />
+                    <x-theme.theme-toggle class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 ml-2" />
                 </div>
             </div>
         </nav>

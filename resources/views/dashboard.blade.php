@@ -16,11 +16,11 @@
                 @csrf
 
                 <div class="flex flex-col">
-                    <x-input-label for="document" :value="__('documents.uploads.label')" />
+                    <x-uikit.inputs.input-label for="document" :value="__('documents.uploads.label')" />
 
                     <div class="mt-4 flex flex-col sm:flex-row sm:items-start gap-4">
                         <div class="flex-1">
-                            <x-file-input
+                            <x-uikit.inputs.file-input
                                 id="document"
                                 type="file"
                                 name="document"
@@ -28,12 +28,12 @@
                                 required
                                 class="w-full"
                             />
-                            <x-input-error :messages="$errors->get('document')" class="mt-2" />
+                            <x-uikit.inputs.input-error :messages="$errors->get('document')" class="mt-2" />
                         </div>
 
-                        <x-primary-spinner-button id="documentUploadButton" class="w-full sm:w-auto h-10 sm:h-8 flex-shrink-0">
+                        <x-uikit.buttons.primary-spinner-button id="documentUploadButton" class="w-full sm:w-auto h-10 sm:h-8 flex-shrink-0">
                             {{ __('documents.uploads.button') }}
-                        </x-primary-spinner-button>
+                        </x-uikit.buttons.primary-spinner-button>
                     </div>
                 </div>
             </form>
