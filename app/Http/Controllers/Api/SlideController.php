@@ -19,7 +19,7 @@ class SlideController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => 'not_found',
-                'message' => 'No document found.',
+                'message' => __('documents.conversions.not_found'),
             ]);
         }
 
@@ -31,7 +31,7 @@ class SlideController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => 'expired',
-                'message' => 'Document conversion expired.',
+                'message' => __('documents.conversions.expired'),
             ]);
         }
 
@@ -39,7 +39,7 @@ class SlideController extends Controller
             return response()->json([
                 'success' => true,
                 'status' => $status,
-                'message' => 'Document is being processed.',
+                'message' => __('documents.conversions.processing'),
             ]);
         }
 
@@ -50,7 +50,7 @@ class SlideController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => 'error',
-                'message' => $error ?: 'Document conversion failed.',
+                'message' => $error ?: __('documents.conversions.error'),
             ]);
         }
 
@@ -75,7 +75,7 @@ class SlideController extends Controller
         return response()->json([
             'success' => false,
             'status' => 'unknown',
-            'message' => 'Unknown status.',
+            'message' => __('documents.conversions.unknown'),
         ]);
     }
 }

@@ -20,8 +20,12 @@ return [
             'set_up' => 'Something went wrong while setting up.',
             'tear_down' => 'Something went wrong while tearing down.',
         ],
+        'error' => 'Document conversion failed.',
+        'expired' => 'Document conversion expired.',
+        'not_found' => 'No document found.',
         'processing' => 'Your document is being processed. Please wait...',
         'success' => 'Converted successfully.',
+        'unknown' => 'Unknown status.',
     ],
     'downloads' => [
         'sliders' => [
