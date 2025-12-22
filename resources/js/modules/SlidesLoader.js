@@ -32,8 +32,8 @@ export default {
 
                     this.removeProcessingMessage();
 
-                    if (data.success_message) {
-                        this.showSuccessMessage(data.success_message);
+                    if (data.message) {
+                        this.showSuccessMessage(data.message);
                     }
 
                     if (data.document) {

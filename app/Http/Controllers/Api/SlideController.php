@@ -63,11 +63,11 @@ class SlideController extends Controller
                 return response()->json([
                     'success' => true,
                     'status' => 'success',
-                    'slides' => $slides,
-                    'success_message' => __('documents.conversions.success'),
+                    'message' => __('documents.conversions.success'),
                     'document' => [
                         'id' => $documentId,
                     ],
+                    'slides' => $slides,
                 ]);
             }
         }
