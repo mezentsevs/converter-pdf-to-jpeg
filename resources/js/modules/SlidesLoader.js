@@ -64,7 +64,7 @@ export default {
                 }
 
                 if (data.status === 'processing' || data.status === 'queued') {
-                    this.showProcessingMessage(data.message || 'Document is being processed');
+                    this.showProcessingMessage(data.message || 'Document is being processed.');
                     setTimeout(pollSlides, interval);
 
                     return;
