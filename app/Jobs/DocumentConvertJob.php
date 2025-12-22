@@ -42,6 +42,13 @@ class DocumentConvertJob implements ShouldQueue
             if (($currentPagesCount = PdfHelper::countPages($this->document->filepath)) > config('documents.max_pages_count')) {
                 $documents->delete($this->document);
 
+                logger()->warning(__('documents.conversions.exceptions.max_pages_count', [
+                    'current' => $currentPagesCount,
+                    'max' => config('documents.max_pages_count'),
+                ]), [
+                    'document' => $this->document,
+                ]);
+
                 throw new DocumentMaxPagesCountException(__('documents.conversions.exceptions.max_pages_count', [
                     'current' => $currentPagesCount,
                     'max' => config('documents.max_pages_count'),
