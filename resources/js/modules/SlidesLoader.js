@@ -146,6 +146,7 @@ export default {
 
         if (downloadContainer && downloadButton) {
             downloadContainer.classList.remove('hidden');
+            downloadContainer.classList.add('flex', 'justify-center');
 
             downloadButton.onclick = () => {
                 window.location.href = `/document/${docData.id}/download-slider`;
