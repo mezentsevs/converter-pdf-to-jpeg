@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div id="download-container" class="hidden">
+        <div id="download-container" class="flex justify-center">
             <x-uikit.buttons.primary-button
                 id="download-button"
                 class="h-12 w-full sm:w-auto px-8 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 justify-center"

@@ -37,7 +37,13 @@ export default {
                     }
 
                     if (data.document) {
-                        this.showDownloadButton(data.document);
+                        const downloadButton = document.getElementById('download-button');
+
+                        if (downloadButton) {
+                            downloadButton.onclick = () => {
+                                window.location.href = `/document/${data.document.id}/download-slider`;
+                            };
+                        }
                     }
 
                     return;
@@ -139,18 +145,5 @@ export default {
 
         const existingMessages = container.querySelectorAll('.conversion-message');
         existingMessages.forEach(msg => msg.remove());
-    },
-    showDownloadButton(docData) {
-        const downloadContainer = document.getElementById('download-container');
-        const downloadButton = document.getElementById('download-button');
-
-        if (downloadContainer && downloadButton) {
-            downloadContainer.classList.remove('hidden');
-            downloadContainer.classList.add('flex', 'justify-center');
-
-            downloadButton.onclick = () => {
-                window.location.href = `/document/${docData.id}/download-slider`;
-            };
-        }
     },
 };
