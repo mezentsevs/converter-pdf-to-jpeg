@@ -82,7 +82,7 @@ export default {
             processingContainer = document.createElement('div');
             processingContainer.id = 'processing-message';
             processingContainer.className =
-                'conversion-message max-w-3xl mx-auto my-2 p-2 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 overflow-hidden sm:rounded-lg shadow-sm';
+                'conversion-message max-w-3xl mx-auto my-2 p-2 bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 overflow-hidden sm:rounded-lg shadow-sm';
             processingContainer.textContent = message;
 
             const slider = document.getElementById('slider');
