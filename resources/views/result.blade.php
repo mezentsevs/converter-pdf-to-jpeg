@@ -14,12 +14,6 @@
             <x-uikit.messages.message-error>{{ session('error') }}</x-uikit.messages.message-error>
         @endif
 
-        @if(session('converted'))
-            <x-uikit.messages.message-success>{{ session('converted') }}</x-uikit.messages.message-success>
-        @endif
-
-        @if(session('slides'))
-            <x-slider.slider />
-        @endif
+        <x-slider.slider />
     </div>
 </x-app-layout>

@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Dtos\DocumentCreateDto;
-use App\Events\DocumentConvertedEvent;
 use App\Events\DocumentCreatedEvent;
 use App\Events\DocumentDeletedEvent;
 use App\Interfaces\DocumentConverter;
@@ -31,13 +30,7 @@ class DocumentService
 
     public function convert(Document $document): bool
     {
-        if (!$this->documentConverter->convert($document)) {
-            return false;
-        }
-
-        event(new DocumentConvertedEvent($document));
-
-        return true;
+        return $this->documentConverter->convert($document);
     }
 
     public function delete(Document $document): void

@@ -33,16 +33,14 @@
             </div>
         </div>
 
-        @if(session('document'))
-            <div class="flex justify-center">
-                <x-uikit.buttons.primary-button
-                    class="h-12 w-full sm:w-auto px-8 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 justify-center"
-                    onclick="window.location.href = '{{ route('document.download-slider', ['document' => session('document')]) }}';"
-                >
-                    <x-icons.download-icon class="w-5 h-5 inline mr-2" />
-                    {{ __('documents.downloads.sliders.button') }}
-                </x-uikit.buttons.primary-button>
-            </div>
-        @endif
+        <div id="download-container" class="flex justify-center hidden">
+            <x-uikit.buttons.primary-button
+                id="download-button"
+                class="h-12 w-full sm:w-auto px-8 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 justify-center"
+            >
+                <x-icons.download-icon class="w-5 h-5 inline mr-2" />
+                {{ __('documents.downloads.sliders.button') }}
+            </x-uikit.buttons.primary-button>
+        </div>
     </div>
 </section>

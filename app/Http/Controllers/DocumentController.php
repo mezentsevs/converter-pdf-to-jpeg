@@ -12,6 +12,7 @@ use App\Services\DocumentService;
 use App\Services\SliderService;
 use App\Traits\WithUploadedFile;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -42,7 +43,9 @@ class DocumentController extends Controller
         $file->user = $request->user();
         $file->filename = basename($file->storeAs(config('documents.directory'), $this->makeUploadedFileName($file)));
 
-        $this->documents->create(DocumentCreateDtoFactory::fromUploadedFile($file));
+        $document = $this->documents->create(DocumentCreateDtoFactory::fromUploadedFile($file));
+
+        Cache::put('user_' . $request->user()->id . '_document_id', $document->id, now()->addMinutes(10));
 
         return redirect()
             ->route('result')

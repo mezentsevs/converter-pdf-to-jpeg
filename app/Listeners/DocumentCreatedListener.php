@@ -3,51 +3,17 @@
 namespace App\Listeners;
 
 use App\Events\DocumentCreatedEvent;
-use App\Exceptions\DocumentConvertCommonException;
-use App\Exceptions\DocumentMaxPagesCountException;
-use App\Helpers\PdfHelper;
-use App\Services\DocumentService;
-use App\Services\SliderService;
-use Illuminate\Http\RedirectResponse;
+use App\Jobs\DocumentConvertJob;
+use Illuminate\Support\Facades\Cache;
 
 class DocumentCreatedListener
 {
-    public function __construct(
-        protected DocumentService $documents,
-        protected SliderService $sliders,
-    ) {
-    }
-
-    public function handle(DocumentCreatedEvent $event): RedirectResponse
+    public function handle(DocumentCreatedEvent $event): void
     {
         logger()->info($event::class, [$event]);
 
-        try {
-            if (($currentPagesCount = PdfHelper::countPages($event->document->filepath)) > config('documents.max_pages_count')) {
-                $this->documents->delete($event->document);
+        Cache::put(DocumentConvertJob::CACHE_PREFIX . $event->document->id, 'queued', now()->addMinutes(10));
 
-                throw new DocumentMaxPagesCountException(__('documents.conversions.exceptions.max_pages_count', [
-                    'current' => $currentPagesCount,
-                    'max' => config('documents.max_pages_count'),
-                ]));
-            }
-
-            if ($this->documents->convert($event->document)) {
-                session()->put('slides', $this->sliders->getSlides($event->document));
-
-                return redirect()
-                    ->route('result')
-                    ->with([
-                        'document' => $event->document,
-                        'converted' => __('documents.conversions.success'),
-                    ]);
-            }
-
-            throw new DocumentConvertCommonException(__('documents.conversions.exceptions.common'));
-        } catch (DocumentMaxPagesCountException | DocumentConvertCommonException $e) {
-            return redirect()
-                ->route('result')
-                ->with('error', $e->getMessage());
-        }
+        DocumentConvertJob::dispatch($event->document);
     }
 }
