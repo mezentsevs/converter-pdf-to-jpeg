@@ -86,7 +86,7 @@ export default {
             processingContainer.textContent = message;
 
             const slider = document.getElementById('slider');
-            const container = document.querySelector('main .pb-8');
+            const container = document.getElementById('result-container');
 
             if (slider && container) {
                 container.insertBefore(processingContainer, slider);
@@ -109,7 +109,7 @@ export default {
         errorContainer.textContent = message;
 
         const slider = document.getElementById('slider');
-        const container = document.querySelector('main .pb-8');
+        const container = document.getElementById('result-container');
 
         if (slider && container) {
             container.insertBefore(errorContainer, slider);
@@ -124,14 +124,14 @@ export default {
         successContainer.textContent = message;
 
         const slider = document.getElementById('slider');
-        const container = document.querySelector('main .pb-8');
+        const container = document.getElementById('result-container');
 
         if (slider && container) {
             container.insertBefore(successContainer, slider);
         }
     },
     removeExistingMessages() {
-        const container = document.querySelector('main .pb-8');
+        const container = document.getElementById('result-container');
 
         if (!container) {
             return;

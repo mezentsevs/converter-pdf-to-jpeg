@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="pb-8">
+    <div id="result-container" class="pb-8">
         @if(session('uploaded'))
             <x-uikit.messages.message-success>{{ session('uploaded') }}</x-uikit.messages.message-success>
         @endif
