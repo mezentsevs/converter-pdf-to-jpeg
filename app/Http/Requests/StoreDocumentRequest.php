@@ -23,8 +23,17 @@ class StoreDocumentRequest extends FormRequest
                 'required',
                 'file',
                 'mimetypes:application/pdf',
-                'max:' . ((int) config('uploads.post.max_file_size')) / 1024,
+                'max:' . (int) round(config('uploads.post.max_file_size') / 1024),
             ],
+        ];
+    }
+
+    public function messages(): array
+    {
+        $maxFileSizeMB = config('uploads.post.max_file_size_mb');
+
+        return [
+            'document.max' => "The document field must not be greater than {$maxFileSizeMB} MB.",
         ];
     }
 }
