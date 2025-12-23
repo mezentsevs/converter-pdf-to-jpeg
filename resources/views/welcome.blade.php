@@ -190,7 +190,7 @@
                             </span>
                         </div>
                         <p class="text-xs text-gray-500 dark:text-gray-400 italic">
-                            This is a converter pdf to jpeg, written in and for educational and demonstrational purposes.
+                            Professional PDF to JPEG Converter
                         </p>
                     </div>
                     
