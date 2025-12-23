@@ -22,6 +22,22 @@ Based on tech stack:
 - [Sail](https://github.com/laravel/sail),
 - [Scribe](https://github.com/knuckleswtf/scribe).
 
+## Key Features
+
+- **Secure Document Upload & Validation** - Users can upload PDF documents with strict validation for file type, size, and maximum page count. Uploaded files are stored with a unique hashed filename to prevent conflicts and ensure secure storage.
+
+- **High-Quality Conversion Engine** - Uses the ImageMagick library to convert each PDF page into a high-resolution JPEG image with optimized compression and automatic portrait orientation correction.
+
+- **Asynchronous Job Processing** - Conversion tasks are handled in the background using Laravel Queues, ensuring a responsive user interface and reliable processing of documents.
+
+- **Interactive In-Browser Preview** - Converted images are instantly displayed in a built-in, interactive slider, allowing users to navigate between pages directly in their browser.
+
+- **Portable Archive Download** - Users can download a self-contained ZIP archive containing all generated JPEG images and a standalone HTML slider for offline viewing and easy sharing.
+
+- **Full User Authentication & Management** - Includes secure user registration, login, and profile management powered by Laravel Breeze and Sanctum.
+
+- **Modern Responsive Interface** - Features a clean, mobile-friendly UI built with Tailwind CSS with a fully responsive design for all screen sizes, including a light/dark theme toggle for user preference.
+
 ## Getting Started
 
 - Clone the repository:
