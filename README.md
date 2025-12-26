@@ -116,6 +116,32 @@ php artisan migrate:fresh --seed
 That's it! Now you can upload pdf documents, convert to jpeg and download zip archives with sliders.
 For example, you can use pdf documents in tests/Dummies/Documents directory for testing. Thank you!
 
+## Scheduled Cleanup
+
+The application uses Laravel's built-in model pruning to automatically clean up old conversion data and free up disk space.
+
+### Automated Cleanup
+- **What it does**: The system automatically removes documents, their generated images, sliders, archive files, and related database records that are older than 24 hours.
+- **When it runs**: Every Sunday at 00:00 (midnight, start of Monday).
+- **How it works**: The `Document` model uses the `MassPrunable` trait. The scheduled task `model:prune` finds and deletes old records. Before deletion, the model's `pruning()` method ensures all associated files are removed from storage. The process includes error handling to log any file system issues without interrupting the cleanup.
+
+### Manual Cleanup
+You can trigger the cleanup process manually at any time by running the following command in your terminal:
+``` bash
+php artisan model:prune --model=App\\Models\\Document
+```
+
+To customize the age threshold for manual cleanup (temporarily), you can:
+1. Temporarily modify the `prunable()` method in `app/Models/Document.php` to use a different time interval (e.g., `now()->subHours(12)` for 12 hours).
+2. Run the command above.
+
+### Configuration
+The cleanup logic is defined within the `Document` model itself (`app/Models/Document.php`):
+- **Age Threshold**: Configured in the `prunable()` method (default: `now()->subDay()` for 24 hours). Modify this method to change how old records must be to be deleted.
+- **File Deletion**: Handled in the `pruning()` and `deleteDocumentFiles()` methods, which safely remove all related files from both `public` and `private` storage disks.
+
+The scheduled task is configured in `bootstrap/app.php` using the `withSchedule()` method. You can adjust the schedule by modifying the `weeklyOn(0, '0:00')` call using [Laravel's scheduler syntax](https://laravel.com/docs/scheduling).
+
 ## Screenshots
 
 <img width="1920" height="1200" alt="2025-12-23_13-53-53" src="https://github.com/user-attachments/assets/da9c4489-77f0-44d9-92e5-38518e7668d7" />
