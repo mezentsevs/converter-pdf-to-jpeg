@@ -7,7 +7,6 @@ use App\Events\DocumentCreatedEvent;
 use App\Events\DocumentDeletedEvent;
 use App\Interfaces\DocumentConverter;
 use App\Models\Document;
-use Illuminate\Support\Facades\Storage;
 
 class DocumentService
 {
@@ -35,7 +34,7 @@ class DocumentService
 
     public function delete(Document $document): void
     {
-        Storage::delete(config('documents.directory') . DS . $document->filename);
+        $this->deleteDocumentFiles($document);
 
         $document->delete();
 
