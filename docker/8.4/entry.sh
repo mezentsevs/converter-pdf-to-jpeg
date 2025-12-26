@@ -4,6 +4,10 @@ set -e
 rm -f /var/www/html/public/storage
 php /var/www/html/artisan storage:link
 
+echo "* * * * * php /var/www/html/artisan schedule:run >> /dev/null 2>&1" > /etc/cron.d/laravel-scheduler
+chmod 0644 /etc/cron.d/laravel-scheduler
+crontab /etc/cron.d/laravel-scheduler
+
 echo "Waiting for database to be ready..."
 
 max_attempts=30

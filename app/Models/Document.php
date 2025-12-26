@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Helpers\StringHelper;
+use App\Services\DocumentService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -19,9 +21,10 @@ use Illuminate\Support\Carbon;
  * @property int $size
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read mixed $filepath
  * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
+ * @property-read mixed $file_relative_path
+ * @property-read mixed $filepath
  * @property-read mixed $images_absolute_path
  * @property-read mixed $images_relative_path
  * @property-read mixed $slider_absolute_path
@@ -43,6 +46,8 @@ use Illuminate\Support\Carbon;
  */
 class Document extends Model
 {
+    use Prunable;
+
     protected $fillable = [
         'filename',
         'type',
@@ -59,14 +64,36 @@ class Document extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function prunable(): Builder
+    {
+        return static::where('created_at', '<', now()->subDay());
+    }
+
+    protected function pruning(): void
+    {
+        $this->getDocumentService()->deleteDocumentFiles($this);
+    }
+
+    protected function getDocumentService(): DocumentService
+    {
+        return app(DocumentService::class);
+    }
+
+    protected function fileRelativePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn (): string => config('documents.directory')
+                . DS . $this->filename,
+        );
+    }
+
     protected function filepath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path(
+            get: fn (): string => storage_path(
                 'app'
                 . DS . 'private'
-                . DS . config('documents.directory')
-                . DS . $this->filename,
+                . DS . $this->file_relative_path,
             ),
         );
     }
@@ -74,7 +101,7 @@ class Document extends Model
     protected function sliderRelativePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => config('sliders.directory')
+            get: fn (): string => config('sliders.directory')
                 . DS . StringHelper::trimExt($this->filename),
         );
     }
@@ -82,7 +109,7 @@ class Document extends Model
     protected function sliderAbsolutePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path('app'
+            get: fn (): string => storage_path('app'
                 . DS . 'public'
                 . DS . $this->slider_relative_path),
         );
@@ -91,7 +118,7 @@ class Document extends Model
     protected function imagesRelativePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->slider_relative_path
+            get: fn (): string => $this->slider_relative_path
                 . DS . config('images.directory'),
         );
     }
@@ -99,7 +126,7 @@ class Document extends Model
     protected function imagesAbsolutePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path(
+            get: fn (): string => storage_path(
                 'app'
                 . DS . 'public'
                 . DS . $this->images_relative_path,
@@ -110,7 +137,7 @@ class Document extends Model
     protected function sliderArchiveRelativePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => config('archives.directory')
+            get: fn (): string => config('archives.directory')
                 . DS . StringHelper::trimExt($this->filename),
         );
     }
@@ -118,7 +145,7 @@ class Document extends Model
     protected function sliderArchiveAbsolutePath(): Attribute
     {
         return Attribute::make(
-            get: fn () => storage_path('app'
+            get: fn (): string => storage_path('app'
                 . DS . 'public'
                 . DS . $this->slider_archive_relative_path),
         );
