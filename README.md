@@ -177,6 +177,13 @@ The scheduled task is configured in `bootstrap/app.php` using the `withSchedule(
 <img width="1920" height="1200" alt="2025-12-23_14-43-41" src="https://github.com/user-attachments/assets/4c7db5be-7594-48a9-a861-d91dbabb3c25" />
 <img width="1920" height="1200" alt="2025-12-23_14-44-22" src="https://github.com/user-attachments/assets/4f0f99ef-64f1-4f22-b89e-22b16b137e3b" />
 
+### Portable Slider
+
+<img width="1920" height="1200" alt="2025-12-29_16-33-56" src="https://github.com/user-attachments/assets/82dceb30-41d3-4eaa-a900-b09cecd6df84" />
+<img width="1920" height="1200" alt="2025-12-29_16-34-53" src="https://github.com/user-attachments/assets/5385a3d4-cc3d-4085-bfac-bede57adfaa2" />
+<img width="1920" height="1200" alt="2025-12-29_16-37-26" src="https://github.com/user-attachments/assets/afbcd7d6-6f2a-4f45-9262-df337d356b60" />
+<img width="1920" height="1200" alt="2025-12-29_16-40-12" src="https://github.com/user-attachments/assets/f9e7b257-a914-42e8-ac4a-4ce59af2ff3f" />
+
 ## License
 
 The 'Converter pdf to jpeg' is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
