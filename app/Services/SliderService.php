@@ -63,23 +63,34 @@ class SliderService
                             --color-bg-dark: #111827;
                             --color-header-bg-light: #ffffff;
                             --color-header-bg-dark: #1f2937;
-                            --color-text-light: #111827;
-                            --color-text-dark: #f9fafb;
-                            --color-border-light: #e5e7eb;
-                            --color-border-dark: #374151;
+                            --color-text-light: #374151;
+                            --color-text-dark: #d1d5db;
+                            --color-border-light: #d1d5db;
+                            --color-border-dark: #6b7280;
                             --color-slider-bg-light: #ffffff;
                             --color-slider-bg-dark: #1f2937;
-                            --color-button-bg-light: #374151;
-                            --color-button-bg-dark: #e5e7eb;
-                            --color-button-text-light: #ffffff;
-                            --color-button-text-dark: #111827;
-                            --color-button-hover-light: #4b5563;
-                            --color-button-hover-dark: #ffffff;
+                            --color-button-hover-light: #f9fafb;
+                            --color-button-hover-dark: #374151;
                             --color-indigo-light: #6366f1;
                             --color-indigo-dark: #4f46e5;
                             --color-shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
                             --color-shadow-dark: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+                            --color-button-shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                            --color-button-shadow-dark: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+                            --color-ring-offset-light: #ffffff;
+                            --color-ring-offset-dark: #1f2937;
+                            --color-image-border-light: #e5e7eb;
+                            --color-image-border-dark: #374151;
+                            --color-image-shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                            --color-image-shadow-dark: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
                             --transition-default: all 0.2s ease-in-out;
+                        }
+                        
+                        @media (prefers-color-scheme: dark) {
+                            :root {
+                                --color-ring-offset-light: #1f2937;
+                                --color-ring-offset-dark: #1f2937;
+                            }
                         }
                         
                         body {
@@ -178,15 +189,15 @@ class SliderService
                         .slide-image {
                             width: 100%;
                             border-radius: 0.5rem;
-                            border: 2px solid var(--color-border-light);
-                            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                            border: 2px solid var(--color-image-border-light);
+                            box-shadow: var(--color-image-shadow-light);
                             transition: var(--transition-default);
                         }
                         
                         @media (prefers-color-scheme: dark) {
                             .slide-image {
-                                border-color: var(--color-border-dark);
-                                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+                                border-color: var(--color-image-border-dark);
+                                box-shadow: var(--color-image-shadow-dark);
                             }
                         }
                         
@@ -221,7 +232,6 @@ class SliderService
                         }
                         
                         .control-button {
-                            flex: 1;
                             height: 3rem;
                             display: inline-flex;
                             align-items: center;
@@ -232,11 +242,13 @@ class SliderService
                             color: var(--color-text-light);
                             font-weight: 500;
                             text-transform: uppercase;
-                            letter-spacing: 0.05em;
+                            letter-spacing: 0.1em;
                             cursor: pointer;
                             transition: var(--transition-default);
                             font-size: 0.875rem;
                             padding: 0 1rem;
+                            transform-origin: center;
+                            box-shadow: var(--color-button-shadow-light);
                         }
                         
                         @media (prefers-color-scheme: dark) {
@@ -244,17 +256,18 @@ class SliderService
                                 background-color: var(--color-slider-bg-dark);
                                 border-color: var(--color-border-dark);
                                 color: var(--color-text-dark);
+                                box-shadow: var(--color-button-shadow-dark);
                             }
                         }
                         
                         .control-button:hover {
                             transform: scale(1.05);
-                            background-color: rgba(0, 0, 0, 0.05);
+                            background-color: var(--color-button-hover-light);
                         }
                         
                         @media (prefers-color-scheme: dark) {
                             .control-button:hover {
-                                background-color: rgba(255, 255, 255, 0.1);
+                                background-color: var(--color-button-hover-dark);
                             }
                         }
                         
@@ -265,19 +278,19 @@ class SliderService
                         .control-button:focus {
                             outline: 2px solid transparent;
                             outline-offset: 2px;
-                            box-shadow: 0 0 0 2px var(--color-indigo-light);
+                            box-shadow: 0 0 0 2px var(--color-ring-offset-light), 0 0 0 4px var(--color-indigo-light);
                         }
                         
                         @media (prefers-color-scheme: dark) {
                             .control-button:focus {
-                                box-shadow: 0 0 0 2px var(--color-indigo-dark);
+                                box-shadow: 0 0 0 2px var(--color-ring-offset-dark), 0 0 0 4px var(--color-indigo-dark);
                             }
                         }
                         
                         @media (min-width: 640px) {
                             .control-button {
-                                flex: none;
                                 width: 8rem;
+                                flex: none;
                             }
                         }
                         
@@ -287,14 +300,41 @@ class SliderService
                             }
                         }
                         
-                        .button-text {
-                            font-size: 1.125rem;
-                            margin-right: 0.5rem;
+                        @media (max-width: 639px) {
+                            .control-button {
+                                flex: 1;
+                            }
                         }
                         
-                        @media (max-width: 639px) {
-                            .button-text-long {
-                                display: none;
+                        .button-content {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            gap: 0.5rem;
+                        }
+                        
+                        .button-arrow {
+                            font-size: 1.125rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            line-height: 1;
+                        }
+                        
+                        .button-label {
+                            display: none;
+                            font-size: 0.875rem;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            line-height: 1;
+                        }
+                        
+                        @media (min-width: 640px) {
+                            .button-label {
+                                display: inline-flex;
                             }
                         }
                         
@@ -357,13 +397,17 @@ class SliderService
                                     <div class="controls-container">
                                         <div class="controls-wrapper">
                                             <div class="controls-group">
-                                                <button id="prev" class="control-button" onclick="slider.prev()">
-                                                    <span class="button-text">&lsaquo;</span>
-                                                    <span class="button-text-long">Previous</span>
+                                                <button type="button" id="prev" class="control-button" onclick="slider.prev()">
+                                                    <div class="button-content">
+                                                        <span class="button-arrow">&lsaquo;</span>
+                                                        <span class="button-label">Previous</span>
+                                                    </div>
                                                 </button>
-                                                <button id="next" class="control-button" onclick="slider.next()">
-                                                    <span class="button-text-long">Next</span>
-                                                    <span class="button-text">&rsaquo;</span>
+                                                <button type="button" id="next" class="control-button" onclick="slider.next()">
+                                                    <div class="button-content">
+                                                        <span class="button-label">Next</span>
+                                                        <span class="button-arrow">&rsaquo;</span>
+                                                    </div>
                                                 </button>
                                             </div>
                                         </div>
